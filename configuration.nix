@@ -114,6 +114,7 @@ programs.dconf = {
   };
 
   # List packages installed in system profile. To search, run:
+  nixpkgs.config.allowUnfree = true;
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 	vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -121,6 +122,8 @@ programs.dconf = {
 	firefox
 	neovim
 	fzf
+	discord
+	spotify
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
