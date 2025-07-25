@@ -43,6 +43,7 @@
     LC_TIME = "de_AT.UTF-8";
   };
 
+  users.defaultShell = pkgs.bashInteractive;
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -69,7 +70,7 @@ programs.dconf = {
 };
   programs.git = {
     enable = true;
-	config = {
+        config = {
 
     user.name = "felixbrgm";
     user.email = "github.badly321@passinbox.com";
@@ -117,14 +118,21 @@ programs.dconf = {
   nixpkgs.config.allowUnfree = true;
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-	vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-	ghostty
-	firefox
-	neovim
-	fzf
-	discord
-	spotify
+        vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+        pkgs.vimPlugins.LazyVim
+        ghostty
+        firefox
+        neovim
+        fzf
+        discord
+        spotify
   ];
+
+  system.activationScripts.createTestingFile = {
+    text = ''
+      echo "font-size = 9" > /home/fbruggem/.config/ghostty/config
+    '';
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
