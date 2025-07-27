@@ -43,7 +43,6 @@
     LC_TIME = "de_AT.UTF-8";
   };
 
-  users.defaultShell = pkgs.bashInteractive;
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -62,6 +61,7 @@ programs.dconf = {
           "switch-to-workspace-3" = ["<Alt>3"];
           "switch-to-workspace-4" = ["<Alt>4"];
           "switch-to-workspace-5" = ["<Alt>5"];
+          "search" = ["<Control>space"];
         };
       };
       lockAll = true; # optional: enforce the settings strictly
@@ -118,19 +118,41 @@ programs.dconf = {
   nixpkgs.config.allowUnfree = true;
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-        vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-        pkgs.vimPlugins.LazyVim
+	# Apps
         ghostty
         firefox
-        neovim
-        fzf
         discord
         spotify
+	# vim
+        vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+        neovim
+        pkgs.vimPlugins.LazyVim
+	vimPlugins.clangd_extensions-nvim
+        fzf
+	# languages
+	cargo
+	binutils
+	clang
+	clang-tools
+	glibc
+	nasm
+	# tools for coding
+	valgrind
   ];
 
   system.activationScripts.createTestingFile = {
     text = ''
-      echo "font-size = 9" > /home/fbruggem/.config/ghostty/config
+	rm -f  /home/fbruggem/.config/ghostty/config
+	echo "font-size = 9" >> /home/fbruggem/.config/ghostty/config
+	echo "keybind = ctrl+,=goto_split:next" >> /home/fbruggem/.config/ghostty/config
+	echo "keybind = super+,=new_split:right" >> /home/fbruggem/.config/ghostty/config
+    '';
+  };
+  system.activationScripts.bashrc = {
+    text = ''
+	rm -f  /home/fbruggem/.bashrc
+	echo 'export PS1="\W> "' >> /home/fbruggem/.bashrc
+	echo 'set -o vi' >> /home/fbruggem/.bashrc
     '';
   };
 
