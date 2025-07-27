@@ -125,10 +125,14 @@ programs.dconf = {
         spotify
 	# vim
         vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+	# you will need this in you init.lua to work
+	# local lspconfig = require("lspconfig")
+	# lspconfig.clangd.setup({})
         neovim
         pkgs.vimPlugins.LazyVim
 	vimPlugins.clangd_extensions-nvim
         fzf
+	ripgrep
 	# languages
 	cargo
 	binutils
