@@ -150,6 +150,10 @@ programs.dconf = {
 	echo "font-size = 9" >> /home/fbruggem/.config/ghostty/config
 	echo "keybind = ctrl+,=goto_split:next" >> /home/fbruggem/.config/ghostty/config
 	echo "keybind = super+,=new_split:right" >> /home/fbruggem/.config/ghostty/config
+	echo "keybind = super+shift+,=new_split:down" >> /home/fbruggem/.config/ghostty/config
+	echo "keybind = super+ctrl+shift+left=resize_split:left,25" >> /home/fbruggem/.config/ghostty/config
+	echo "keybind = super+ctrl+shift+right=resize_split:right,25" >> /home/fbruggem/.config/ghostty/config
+
     '';
   };
   system.activationScripts.bashrc = {
