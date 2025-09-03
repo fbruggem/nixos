@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
@@ -10,17 +6,11 @@
       ./hardware-configuration.nix
     ];
 
-  # Bootloader.
+  # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -45,18 +35,34 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+  services.kmonad = {
+    enable = true;
+    keyboards = {
+      myKMonadOutput = {
+        device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
+        config = builtins.readFile /etc/nixos/config.kbd;
+      };
+    };
+  };
+
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+  environment.extraInit = ''
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+  '';
 
-  #  wget
-programs.dconf = {
-  enable = true;
-  profiles.user.databases = [
+  programs.dconf = {
+    enable = true;
+    profiles.user.databases = [
     {
       settings = {
-	"org/gnome/desktop/interface" = {
+      	"org/gnome/desktop/interface" = {
           enable-animations = false;
+        };
+        "org/gnome/settings-daemon/plugins/media-keys" = {
+          search = "['<Super>space']";
         };
         "org/gnome/desktop/wm/keybindings" = {
           "switch-to-workspace-1" = ["<Alt>1"];
@@ -69,16 +75,17 @@ programs.dconf = {
       };
       lockAll = true; # optional: enforce the settings strictly
     }
-  ];
-};
+    ];
+  };
+
   programs.git = {
     enable = true;
         config = {
-
-    user.name = "felixbrgm";
-    user.email = "github.badly321@passinbox.com";
-};
+          user.name = "felixbrgm";
+          user.email = "github.badly321@passinbox.com";
+        };
   };
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -96,90 +103,73 @@ programs.dconf = {
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fbruggem = {
     isNormalUser = true;
     description = "fbruggem";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
+    extraGroups = [ "input" "uinput" "networkmanager" "wheel" ];
+    # packages = with pkgs; [];
   };
 
-  # List packages installed in system profile. To search, run:
   nixpkgs.config.allowUnfree = true;
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-	# Apps
-        ghostty
-        firefox
-        discord
-        spotify
-	# vim
-        vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-	# you will need this in you init.lua to work
-	# local lspconfig = require("lspconfig")
-	# lspconfig.clangd.setup({})
-        neovim
-        pkgs.vimPlugins.LazyVim
-	vimPlugins.clangd_extensions-nvim
-        fzf
-	ripgrep
-	# languages
-	cargo
-	binutils
-	clang
-	clang-tools
-	glibc
-	nasm
-	# tools for coding
-	valgrind
+	  # Apps
+    ghostty
+    firefox
+    discord
+    spotify
+
+    # neovim
+    neovim
+    fzf
+    ripgrep
+    xclip
+
+    # man pages
+    man-pages
   ];
 
-  system.activationScripts.bashrc = {
+
+  system.activationScripts.ghosttyConfig = {
     text = ''
-	rm -f  /home/fbruggem/.bashrc
-	echo 'export PS1="\W> "' >> /home/fbruggem/.bashrc
-	echo 'set -o vi' >> /home/fbruggem/.bashrc
+      mkdir -p /home/fbruggem/.config/ghostty
+      rm -f  /home/fbruggem/.config/ghostty/config
+      echo "font-size = 12" >> /home/fbruggem/.config/ghostty/config
+      echo "keybind = control+.=toggle_split_zoom" >> /home/fbruggem/.config/ghostty/config
+      echo "keybind = ctrl+,=goto_split:next" >> /home/fbruggem/.config/ghostty/config
+      echo "keybind = super+,=new_split:right" >> /home/fbruggem/.config/ghostty/config
+      echo "keybind = super+shift+,=new_split:down" >> /home/fbruggem/.config/ghostty/config
+      echo "keybind = super+ctrl+shift+left=resize_split:left,25" >> /home/fbruggem/.config/ghostty/config
+      echo "keybind = super+ctrl+shift+right=resize_split:right,25" >> /home/fbruggem/.config/ghostty/config
     '';
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  system.activationScripts.gdb = {
+    text = ''
+      mkdir -p /home/fbruggem/.config/gdb
+      echo "set auto-load safe-path /" > /home/fbruggem/.config/gdb/gdbinit
+    '';
+  };
 
-  # List services that you want to enable:
+  system.activationScripts.lazyvim = {
+    text = ''
+      
+      ln -sfn /etc/nixos/nvim /home/fbruggem/.config/nvim || true
+    '';
+  };
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  system.activationScripts.bashrc = {
+    text = ''
+      rm -f  /home/fbruggem/.bashrc
+      echo 'export PS1="\W> "' >> /home/fbruggem/.bashrc
+      echo 'set -o vi' >> /home/fbruggem/.bashrc
+      echo 'alias vim="nvim"' >> /home/fbruggem/.bashrc
+    '';
+  };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.05";
 
 }
