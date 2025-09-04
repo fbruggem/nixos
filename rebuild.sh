@@ -2,6 +2,9 @@
 
 pushd ~/nixos/ >/dev/null
 
+git reset --hard
+git pull
+
 nvim
 
 # Early exit if no changes detected in ANY files
