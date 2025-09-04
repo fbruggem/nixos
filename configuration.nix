@@ -127,6 +127,7 @@
     fzf
     ripgrep
     xclip
+    clang
 
     # man pages
     man-pages
