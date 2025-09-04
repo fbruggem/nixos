@@ -2,3 +2,4 @@ cd "$HOME/nixos" || exit
 if ! git pull origin main; then
   notify-send "NixOS Config Update Failed" "Git pull encountered an error."
 fi
+notify-send hello this is me
