@@ -88,18 +88,6 @@
       user.email = "github.badly321@passinbox.com";
     };
   };
-  users.users.fbruggem.linger = true;
-
-  systemd.user.services.git-sync = {
-    enable = true;
-    description = "Pull latest config in ~/nixos on login";
-    after = ["network-online.target"];
-    wantedBy = ["default.target"];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.git}/bin/git -C /home/fbruggem/nixos pull";
-    };
-  };
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
