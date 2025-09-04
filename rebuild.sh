@@ -2,6 +2,8 @@
 
 pushd ~/nixos/ >/dev/null
 
+nvim
+
 # Early exit if no changes detected in ANY files
 if git diff --quiet; then
   echo "No changes detected—exiting."
