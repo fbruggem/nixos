@@ -35,4 +35,4 @@ git commit -m "Rebuild succeeded — $current"
 
 popd >/dev/null
 
-notify-send -e "NixOS Rebuild Successful" --icon=dialog-information
+echo -e "NixOS Rebuild Successful"
