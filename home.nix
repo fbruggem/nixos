@@ -17,6 +17,7 @@ in {
     home.file = {
       ".config/ghostty/config".source = /home/fbruggem/nixos/config/ghostty;
       ".bashrc".source = /home/fbruggem/nixos/config/bashrc;
+      ".bash_profile".source = /home/fbruggem/nixos/config/bash_profile;
       ".config/gdb/gdbinit".source = /home/fbruggem/nixos/config/gdbinit;
       ".config/nvim" = {
         source = /home/fbruggem/nixos/config/nvim;

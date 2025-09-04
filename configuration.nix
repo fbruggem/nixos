@@ -36,6 +36,7 @@
     # man pages
     man-pages
     alejandra
+    libnotify
   ];
 
   # Gnome
