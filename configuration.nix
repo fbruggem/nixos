@@ -4,6 +4,7 @@
   imports =
     [
       /etc/nixos/hardware-configuration.nix
+      ./home.nix
     ];
 
   networking.hostName = "nixos";
@@ -85,45 +86,30 @@
       user.email = "github.badly321@passinbox.com";
     };
   };
-
-
-  system.activationScripts.ghosttyConfig = {
-    text = ''
-      mkdir -p /home/fbruggem/.config/ghostty
-      rm -f  /home/fbruggem/.config/ghostty/config
-      echo "font-size = 12" >> /home/fbruggem/.config/ghostty/config
-      echo "keybind = control+.=toggle_split_zoom" >> /home/fbruggem/.config/ghostty/config
-      echo "keybind = ctrl+,=goto_split:next" >> /home/fbruggem/.config/ghostty/config
-      echo "keybind = super+,=new_split:right" >> /home/fbruggem/.config/ghostty/config
-      echo "keybind = super+shift+,=new_split:down" >> /home/fbruggem/.config/ghostty/config
-      echo "keybind = super+ctrl+shift+left=resize_split:left,25" >> /home/fbruggem/.config/ghostty/config
-      echo "keybind = super+ctrl+shift+right=resize_split:right,25" >> /home/fbruggem/.config/ghostty/config
-    '';
-  };
-
-  system.activationScripts.gdb = {
-    text = ''
-      mkdir -p /home/fbruggem/.config/gdb
-      echo "set auto-load safe-path /" > /home/fbruggem/.config/gdb/gdbinit
-    '';
-  };
-
-  system.activationScripts.lazyvim = {
-    text = ''
-      
-      ln -sfn /etc/nixos/nvim /home/fbruggem/.config/nvim || true
-    '';
-  };
-
-  system.activationScripts.bashrc = {
-    text = ''
-      rm -f  /home/fbruggem/.bashrc
-      echo 'export PS1="\W> "' >> /home/fbruggem/.bashrc
-      echo 'set -o vi' >> /home/fbruggem/.bashrc
-      echo 'alias vim="nvim"' >> /home/fbruggem/.bashrc
-    '';
-  };
-
+  #
+  # system.activationScripts.gdb = {
+  #   text = ''
+  #     mkdir -p /home/fbruggem/.config/gdb
+  #     echo "set auto-load safe-path /" > /home/fbruggem/.config/gdb/gdbinit
+  #   '';
+  # };
+  #
+  # system.activationScripts.lazyvim = {
+  #   text = ''
+  #
+  #     ln -sfn /etc/nixos/nvim /home/fbruggem/.config/nvim || true
+  #   '';
+  # };
+  #
+  # system.activationScripts.bashrc = {
+  #   text = ''
+  #     rm -f  /home/fbruggem/.bashrc
+  #     echo 'export PS1="\W> "' >> /home/fbruggem/.bashrc
+  #     echo 'set -o vi' >> /home/fbruggem/.bashrc
+  #     echo 'alias vim="nvim"' >> /home/fbruggem/.bashrc
+  #   '';
+  # };
+  #
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
