@@ -86,30 +86,6 @@
       user.email = "github.badly321@passinbox.com";
     };
   };
-  #
-  # system.activationScripts.gdb = {
-  #   text = ''
-  #     mkdir -p /home/fbruggem/.config/gdb
-  #     echo "set auto-load safe-path /" > /home/fbruggem/.config/gdb/gdbinit
-  #   '';
-  # };
-  #
-  # system.activationScripts.lazyvim = {
-  #   text = ''
-  #
-  #     ln -sfn /etc/nixos/nvim /home/fbruggem/.config/nvim || true
-  #   '';
-  # };
-  #
-  # system.activationScripts.bashrc = {
-  #   text = ''
-  #     rm -f  /home/fbruggem/.bashrc
-  #     echo 'export PS1="\W> "' >> /home/fbruggem/.bashrc
-  #     echo 'set -o vi' >> /home/fbruggem/.bashrc
-  #     echo 'alias vim="nvim"' >> /home/fbruggem/.bashrc
-  #   '';
-  # };
-  #
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;

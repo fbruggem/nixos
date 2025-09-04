@@ -13,7 +13,9 @@ in
     home-manager.users.fbruggem = {
         home.stateVersion = "25.05";
         home.file = {
-          ".config/ghostty/config".source            = /home/fbruggem/nixos/config/ghostty;
+          ".config/ghostty/config".source   = /home/fbruggem/nixos/config/ghostty;
+          ".bashrc".source                  = /home/fbruggem/nixos/config/bashrc;
+          ".config/gdb/gdbinit".source      = /home/fbruggem/nixos/config/gdbinit;
           ".config/nvim" = {
             source = /home/fbruggem/nixos/config/nvim;
             recursive = true;
