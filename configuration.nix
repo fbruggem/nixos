@@ -2,118 +2,20 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+    [
+      /etc/nixos/hardware-configuration.nix
     ];
 
-  # Bootloader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  networking.hostName = "nixos";
+  system.stateVersion = "25.05";
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "Europe/Vienna";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_AT.UTF-8";
-    LC_IDENTIFICATION = "de_AT.UTF-8";
-    LC_MEASUREMENT = "de_AT.UTF-8";
-    LC_MONETARY = "de_AT.UTF-8";
-    LC_NAME = "de_AT.UTF-8";
-    LC_NUMERIC = "de_AT.UTF-8";
-    LC_PAPER = "de_AT.UTF-8";
-    LC_TELEPHONE = "de_AT.UTF-8";
-    LC_TIME = "de_AT.UTF-8";
-  };
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  services.kmonad = {
-    enable = true;
-    keyboards = {
-      myKMonadOutput = {
-        device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
-        config = builtins.readFile /etc/nixos/config.kbd;
-      };
-    };
-  };
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  environment.extraInit = ''
-    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-  '';
-
-  programs.dconf = {
-    enable = true;
-    profiles.user.databases = [
-    {
-      settings = {
-      	"org/gnome/desktop/interface" = {
-          enable-animations = false;
-        };
-        "org/gnome/settings-daemon/plugins/media-keys" = {
-          search = "['<Super>space']";
-        };
-        "org/gnome/desktop/wm/keybindings" = {
-          "switch-to-workspace-1" = ["<Alt>1"];
-          "switch-to-workspace-2" = ["<Alt>2"];
-          "switch-to-workspace-3" = ["<Alt>3"];
-          "switch-to-workspace-4" = ["<Alt>4"];
-          "switch-to-workspace-5" = ["<Alt>5"];
-          "search" = ["<Control>space"];
-        };
-      };
-      lockAll = true; # optional: enforce the settings strictly
-    }
-    ];
-  };
-
-  programs.git = {
-    enable = true;
-        config = {
-          user.name = "felixbrgm";
-          user.email = "github.badly321@passinbox.com";
-        };
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fbruggem = {
     isNormalUser = true;
     description = "fbruggem";
     extraGroups = [ "input" "uinput" "networkmanager" "wheel" ];
-    # packages = with pkgs; [];
   };
 
+  # Packages
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
 	  # Apps
@@ -132,6 +34,57 @@
     # man pages
     man-pages
   ];
+
+  # Gnome
+  services.xserver.enable = true;
+
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
+  # to see all possible settings type in 
+  # gsettings list-schemas
+  # for all groups and 
+  # gsettings list-keys SCHEMA_NAME
+  # to get the keys
+  programs.dconf = {
+    enable = true;
+    profiles.user.databases = [
+    {
+      settings = {
+      	"org/gnome/desktop/interface" = {
+        };
+        "org/gnome/desktop/wm/keybindings" = {
+          "switch-to-workspace-1" = ["<Alt>1"];
+          "switch-to-workspace-2" = ["<Alt>2"];
+          "switch-to-workspace-3" = ["<Alt>3"];
+          "switch-to-workspace-4" = ["<Alt>4"];
+          "switch-to-workspace-5" = ["<Alt>5"];
+          "toggle-fullscreen" = ["<Super>f"];
+        };
+        "org/gnome/settings-daemon/plugins/media-keys" = {
+          "search" = ["<Control>space"];
+        };
+        "org/gnome/desktop/interface" = {
+          enable-animations = false;
+          "color-scheme" = "prefer-dark";
+          "gtk-theme" = "Adwaita-dark";
+        };
+        "org/gnome/desktop/peripherals/mouse" = {
+          natural-scroll = true;
+        };
+      };
+      lockAll = true; # optional: enforce the settings strictly
+    }
+    ];
+  };
+
+  programs.git = {
+    enable = true;
+    config = {
+      user.name = "felixbrgm";
+      user.email = "github.badly321@passinbox.com";
+    };
+  };
 
 
   system.activationScripts.ghosttyConfig = {
@@ -171,6 +124,49 @@
     '';
   };
 
-  system.stateVersion = "25.05";
+
+  # Bootloader
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  # Enable networking
+  networking.networkmanager.enable = true;
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
+
+  # Set your time zone.
+  time.timeZone = "Europe/Vienna";
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "de_AT.UTF-8";
+    LC_IDENTIFICATION = "de_AT.UTF-8";
+    LC_MEASUREMENT = "de_AT.UTF-8";
+    LC_MONETARY = "de_AT.UTF-8";
+    LC_NAME = "de_AT.UTF-8";
+    LC_NUMERIC = "de_AT.UTF-8";
+    LC_PAPER = "de_AT.UTF-8";
+    LC_TELEPHONE = "de_AT.UTF-8";
+    LC_TIME = "de_AT.UTF-8";
+  };
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+
+  # Enable sound with pipewire.
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
 
 }
