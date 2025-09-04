@@ -49,8 +49,7 @@
   # to get the keys
   programs.dconf = {
     enable = true;
-    profiles.user.databases = [
-    {
+    profiles.user.databases = [{
       settings = {
       	"org/gnome/desktop/interface" = {
         };
@@ -75,8 +74,7 @@
         };
       };
       lockAll = true; # optional: enforce the settings strictly
-    }
-    ];
+    }];
   };
 
   programs.git = {
@@ -130,5 +128,4 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
 }
