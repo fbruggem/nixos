@@ -23,7 +23,7 @@ fi
 git diff -U0
 
 echo "Rebuilding NixOS..."
-if ! sudo nixos-rebuild switch -I nixos-config=/home/fbruggem/nixos/configuration.nix &>nixos-switch.log; then
+if ! sudo nixos-rebuild switch -I nixos-config=/home/fbruggem/nixos/configuration.nix; then
   grep --color error nixos-switch.log
   exit 1
 fi
