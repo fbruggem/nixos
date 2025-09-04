@@ -1,11 +1,12 @@
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [
-      /etc/nixos/hardware-configuration.nix
-      ./home.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    /etc/nixos/hardware-configuration.nix
+    ./home.nix
+  ];
 
   networking.hostName = "nixos";
   system.stateVersion = "25.05";
@@ -13,13 +14,13 @@
   users.users.fbruggem = {
     isNormalUser = true;
     description = "fbruggem";
-    extraGroups = [ "input" "uinput" "networkmanager" "wheel" ];
+    extraGroups = ["input" "uinput" "networkmanager" "wheel"];
   };
 
   # Packages
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-	  # Apps
+    # Apps
     ghostty
     firefox
     discord
@@ -34,6 +35,7 @@
 
     # man pages
     man-pages
+    alejandra
   ];
 
   # Gnome
@@ -42,39 +44,41 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  # to see all possible settings type in 
+  # to see all possible settings type in
   # gsettings list-schemas
-  # for all groups and 
+  # for all groups and
   # gsettings list-keys SCHEMA_NAME
   # to get the keys
   programs.dconf = {
     enable = true;
-    profiles.user.databases = [{
-      settings = {
-      	"org/gnome/desktop/interface" = {
+    profiles.user.databases = [
+      {
+        settings = {
+          "org/gnome/desktop/interface" = {
+          };
+          "org/gnome/desktop/wm/keybindings" = {
+            "switch-to-workspace-1" = ["<Alt>1"];
+            "switch-to-workspace-2" = ["<Alt>2"];
+            "switch-to-workspace-3" = ["<Alt>3"];
+            "switch-to-workspace-4" = ["<Alt>4"];
+            "switch-to-workspace-5" = ["<Alt>5"];
+            "toggle-fullscreen" = ["<Super>f"];
+          };
+          "org/gnome/settings-daemon/plugins/media-keys" = {
+            "search" = ["<Control>space"];
+          };
+          "org/gnome/desktop/interface" = {
+            enable-animations = false;
+            "color-scheme" = "prefer-dark";
+            "gtk-theme" = "Adwaita-dark";
+          };
+          "org/gnome/desktop/peripherals/mouse" = {
+            natural-scroll = true;
+          };
         };
-        "org/gnome/desktop/wm/keybindings" = {
-          "switch-to-workspace-1" = ["<Alt>1"];
-          "switch-to-workspace-2" = ["<Alt>2"];
-          "switch-to-workspace-3" = ["<Alt>3"];
-          "switch-to-workspace-4" = ["<Alt>4"];
-          "switch-to-workspace-5" = ["<Alt>5"];
-          "toggle-fullscreen" = ["<Super>f"];
-        };
-        "org/gnome/settings-daemon/plugins/media-keys" = {
-          "search" = ["<Control>space"];
-        };
-        "org/gnome/desktop/interface" = {
-          enable-animations = false;
-          "color-scheme" = "prefer-dark";
-          "gtk-theme" = "Adwaita-dark";
-        };
-        "org/gnome/desktop/peripherals/mouse" = {
-          natural-scroll = true;
-        };
-      };
-      lockAll = true; # optional: enforce the settings strictly
-    }];
+        lockAll = true; # optional: enforce the settings strictly
+      }
+    ];
   };
 
   programs.git = {
