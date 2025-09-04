@@ -1,2 +1,0 @@
-cd "$HOME/nixos" || exit
-git pull origin main
