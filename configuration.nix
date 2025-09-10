@@ -37,6 +37,7 @@
     man-pages
     alejandra
     libnotify
+    cargo
   ];
 
   # Gnome
