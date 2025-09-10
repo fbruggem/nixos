@@ -37,11 +37,13 @@
     ripgrep
     xclip
     clang
+    gnumake
 
     # man pages
     man-pages
     alejandra
     libnotify
+    cargo
   ];
 
   # Gnome
