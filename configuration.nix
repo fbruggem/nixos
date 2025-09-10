@@ -27,6 +27,10 @@
     discord
     spotify
 
+    #tui
+    impala
+    bluetui
+
     # neovim
     neovim
     fzf
