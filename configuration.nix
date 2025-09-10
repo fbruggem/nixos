@@ -2,7 +2,11 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  zen-browser = import (builtins.fetchTarball {
+    url = "https://github.com/youwen5/zen-browser-flake/archive/master.tar.gz";
+  }) {inherit pkgs;};
+in {
   imports = [
     /etc/nixos/hardware-configuration.nix
     ./home.nix
@@ -26,6 +30,9 @@
     firefox
     discord
     spotify
+    (import (builtins.fetchTarball {
+      url = "https://github.com/youwen5/zen-browser-flake/archive/master.tar.gz";
+    }) {inherit pkgs;}).default
 
     # neovim
     neovim
