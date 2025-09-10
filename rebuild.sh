@@ -2,6 +2,7 @@
 
 pushd ~/nixos/ >/dev/null
 
+git pull
 nvim
 
 # Early exit if no changes detected in ANY files
