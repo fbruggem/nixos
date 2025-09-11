@@ -100,7 +100,7 @@ in {
   };
 
   # Automatic pulling of config from github hourly
-  systemd.services.nixos-config-update = {
+  systemd.services.nixos-config-pull = {
     description = "Update NixOS config repository";
     serviceConfig = {
       Type = "oneshot";
