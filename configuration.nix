@@ -98,6 +98,25 @@ in {
     };
   };
 
+  # Automatic pulling of config from github hourly
+  systemd.services.nixos-config-update = {
+    description = "Update NixOS config repository";
+    serviceConfig = {
+      Type = "oneshot";
+      WorkingDirectory = "/home/fbruggem/nixos"; # adjust this path to where your git repo is
+      ExecStart = "${pkgs.git}/bin/git pull --ff-only";
+      User = "root"; # or another user if your repo isn’t root-owned
+    };
+  };
+
+  systemd.timers.nixos-config-update = {
+    description = "Run nixos-config-update hourly";
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      OnCalendar = "hourly"; # runs once an hour
+      Persistent = true; # catch up if missed
+    };
+  };
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
