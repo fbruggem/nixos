@@ -93,6 +93,7 @@ in {
     config = {
       user.name = "felixbrgm";
       user.email = "github.badly321@passinbox.com";
+      pull.rebase = false;
     };
   };
 
