@@ -151,7 +151,7 @@ in {
       ];
     };
   };
-  systemd.timers.nixos-config-update = {
+  systemd.timers.nixos-config-pull = {
     description = "Run nixos-config-update hourly";
     wantedBy = ["timers.target"];
     timerConfig = {
