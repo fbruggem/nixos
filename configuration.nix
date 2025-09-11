@@ -105,7 +105,27 @@ in {
     serviceConfig = {
       Type = "oneshot";
       WorkingDirectory = "/home/fbruggem/nixos"; # adjust this path to where your git repo is
-      ExecStart = "${pkgs.git}/bin/git pull --ff-only";
+      ExecStart = pkgs.writeShellScript "nixos-config-pull" ''
+        set -euo pipefail
+        export HOME=/home/fbruggem
+        cd /home/fbruggem/nixos
+
+        echo "[nixos-config-pull] fetching..."
+        ${pkgs.git}/bin/git fetch origin
+
+        # count commits on remote that are not in local
+        remoteAheadCount=$(${pkgs.git}/bin/git rev-list HEAD..@{u} --count)
+
+        if [ "$remoteAheadCount" -gt 0 ]; then
+          echo "[nixos-config-pull] remote ahead by $remoteAheadCount, pulling..."
+          ${pkgs.git}/bin/git pull --ff-only
+          echo "[nixos-config-pull] pull done — signaling updated (exit 42)"
+          exit 0
+        else
+          echo "[nixos-config-pull] already up-to-date"
+          exit 1
+        fi
+      '';
       User = "fbruggem"; # or another user if your repo isn’t root-owned
       Environment = [
         "PATH=${pkgs.git}/bin:${pkgs.openssh}/bin"
@@ -114,6 +134,23 @@ in {
     };
   };
 
+  systemd.services.nixos-config-rebuild = {
+    description = "Rebuild NixOS if pull updated the repo";
+    unitConfig = {
+      Requires = ["nixos-config-pull.service"];
+      After = ["nixos-config-pull.service"];
+    };
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = ''
+        ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch -I nixos-config=/home/fbruggem/nixos/configuration.nix
+      '';
+      # run as root (default), so we don't set User
+      Environment = [
+        "PATH=${pkgs.nixos-rebuild}/bin:${pkgs.git}/bin:${pkgs.openssh}/bin:${pkgs.bash}/bin"
+      ];
+    };
+  };
   systemd.timers.nixos-config-update = {
     description = "Run nixos-config-update hourly";
     wantedBy = ["timers.target"];
