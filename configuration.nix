@@ -29,6 +29,7 @@ in {
     discord
     spotify
     htop
+    python3
     obsidian
     (import (builtins.fetchTarball {
       url = "https://github.com/youwen5/zen-browser-flake/archive/master.tar.gz";
