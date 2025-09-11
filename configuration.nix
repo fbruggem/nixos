@@ -105,7 +105,7 @@ in {
       Type = "oneshot";
       WorkingDirectory = "/home/fbruggem/nixos"; # adjust this path to where your git repo is
       ExecStart = "${pkgs.git}/bin/git pull --ff-only";
-      User = "root"; # or another user if your repo isn’t root-owned
+      User = "fbruggem"; # or another user if your repo isn’t root-owned
     };
   };
 
@@ -113,7 +113,7 @@ in {
     description = "Run nixos-config-update hourly";
     wantedBy = ["timers.target"];
     timerConfig = {
-      OnCalendar = "hourly"; # runs once an hour
+      OnCalendar = "*:0/1"; # every minute
       Persistent = true; # catch up if missed
     };
   };
