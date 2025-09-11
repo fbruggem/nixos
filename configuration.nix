@@ -99,7 +99,16 @@ in {
     };
   };
 
-  # Automatic pulling of config from github hourly
+  # Automatic checking of new changes of the config on github and rebuild if there is a new commit
+  systemd.timers.nixos-config-rebuild = {
+    description = "Run nixos-config-update hourly";
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      OnCalendar = "*:0/1"; # every minute
+      Persistent = true; # catch up if missed
+    };
+  };
+
   systemd.services.nixos-config-pull = {
     description = "Update NixOS config repository";
     serviceConfig = {
@@ -149,15 +158,6 @@ in {
       Environment = [
         "PATH=${pkgs.nixos-rebuild}/bin:${pkgs.git}/bin:${pkgs.openssh}/bin:${pkgs.bash}/bin"
       ];
-    };
-  };
-
-  systemd.timers.nixos-config-rebuild = {
-    description = "Run nixos-config-update hourly";
-    wantedBy = ["timers.target"];
-    timerConfig = {
-      OnCalendar = "*:0/1"; # every minute
-      Persistent = true; # catch up if missed
     };
   };
 
