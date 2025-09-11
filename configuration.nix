@@ -69,7 +69,7 @@ in {
             "switch-to-workspace-3" = ["<Alt>3"];
             "switch-to-workspace-4" = ["<Alt>4"];
             "switch-to-workspace-5" = ["<Alt>5"];
-            "switch-to-workspace-6" = ["<Alt>6"];
+            "switch-to-workspace-6" = ["<Alt>5"];
             "toggle-fullscreen" = ["<Super>f"];
           };
           "org/gnome/settings-daemon/plugins/media-keys" = {
@@ -101,15 +101,16 @@ in {
 
   # Automatic pulling of config from github hourly
   systemd.services.nixos-config-update = {
-    description = "Update NixOS config repository";
+    description = "Pull NixOS config with fbruggem’s SSH key and rebuild system";
     serviceConfig = {
       Type = "oneshot";
-      WorkingDirectory = "/home/fbruggem/nixos"; # adjust this path to where your git repo is
-      ExecStart = "${pkgs.git}/bin/git pull --ff-only";
-      User = "fbruggem"; # or another user if your repo isn’t root-owned
+      ExecStart = "/home/fbruggem/nixos/rebuild-git-automation.sh";
+      WorkingDirectory = "/home/fbruggem/nixos";
+      User = "root"; # runs as root
       Environment = [
-        "PATH=${pkgs.git}/bin:${pkgs.openssh}/bin"
-        "HOME=/home/fbruggem" # <--- so git+ssh sees ~/.ssh
+        "PATH=${pkgs.git}/bin:${pkgs.openssh}/bin:${pkgs.bash}/bin"
+        "HOME=/root"
+        "GIT_SSH_COMMAND=ssh -i /home/fbruggem/.ssh/id_ed25519"
       ];
     };
   };
@@ -122,6 +123,7 @@ in {
       Persistent = true; # catch up if missed
     };
   };
+
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
