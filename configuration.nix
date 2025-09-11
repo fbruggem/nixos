@@ -23,7 +23,6 @@ in {
 
   # Packages
   nixpkgs.config.allowUnfree = true;
-  programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
     # Apps
     ghostty
