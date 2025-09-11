@@ -3,7 +3,7 @@
 pushd ~/nixos/ >/dev/null
 
 git pull
-nvim
+nvim configuration.nix
 
 # Early exit if no changes detected in ANY files
 if git diff --quiet; then
