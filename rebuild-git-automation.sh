@@ -3,6 +3,8 @@ set -euo pipefail
 
 cd /home/fbruggem/nixos
 
+git config --global --add safe.directory /home/fbruggem/nixos # removes the dubious error
+
 echo "[nixos-config-update] Fetching latest config..."
 if ! git fetch --quiet; then
   echo "Git fetch failed!"

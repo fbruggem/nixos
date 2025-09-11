@@ -110,7 +110,7 @@ in {
       Environment = [
         "PATH=${pkgs.git}/bin:${pkgs.openssh}/bin:${pkgs.bash}/bin"
         "HOME=/root"
-        "GIT_SSH_COMMAND=ssh -i /home/fbruggem/.ssh/id_ed25519"
+        "GIT_SSH_COMMAND=ssh -i /home/fbruggem/.ssh/id_ed25519 -o StrictHostKeyChecking=no"
       ];
     };
   };
