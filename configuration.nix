@@ -101,16 +101,15 @@ in {
 
   # Automatic pulling of config from github hourly
   systemd.services.nixos-config-update = {
-    description = "Pull NixOS config with fbruggem’s SSH key and rebuild system";
+    description = "Update NixOS config repository";
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "/home/fbruggem/nixos/rebuild-git-automation.sh";
-      WorkingDirectory = "/home/fbruggem/nixos";
-      User = "root"; # runs as root
+      WorkingDirectory = "/home/fbruggem/nixos"; # adjust this path to where your git repo is
+      ExecStart = "${pkgs.git}/bin/git pull --ff-only";
+      User = "fbruggem"; # or another user if your repo isn’t root-owned
       Environment = [
-        "PATH=${pkgs.git}/bin:${pkgs.openssh}/bin:${pkgs.bash}/bin"
-        "HOME=/root"
-        "GIT_SSH_COMMAND=ssh -i /home/fbruggem/.ssh/id_ed25519 -o StrictHostKeyChecking=no"
+        "PATH=${pkgs.git}/bin:${pkgs.openssh}/bin"
+        "HOME=/home/fbruggem" # <--- so git+ssh sees ~/.ssh
       ];
     };
   };
