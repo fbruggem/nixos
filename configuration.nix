@@ -106,7 +106,10 @@ in {
       WorkingDirectory = "/home/fbruggem/nixos"; # adjust this path to where your git repo is
       ExecStart = "${pkgs.git}/bin/git pull --ff-only";
       User = "fbruggem"; # or another user if your repo isn’t root-owned
-      Environment = "PATH=${pkgs.git}/bin:${pkgs.openssh}/bin"; # <--- add ssh to PATH
+      Environment = [
+        "PATH=${pkgs.git}/bin:${pkgs.openssh}/bin"
+        "HOME=/home/fbruggem" # <--- so git+ssh sees ~/.ssh
+      ];
     };
   };
 
