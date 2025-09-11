@@ -28,6 +28,7 @@ in {
     ghostty
     discord
     spotify
+    obsidian
     (import (builtins.fetchTarball {
       url = "https://github.com/youwen5/zen-browser-flake/archive/master.tar.gz";
     }) {inherit pkgs;}).default
@@ -42,8 +43,6 @@ in {
     # man pages
     man-pages
     alejandra
-    libnotify
-    cargo
   ];
 
   # Gnome
