@@ -152,14 +152,15 @@ in {
     };
   };
 
-  # systemd.timers.nixos-config-rebuild = {
-  #   description = "Run nixos-config-update hourly";
-  #   wantedBy = ["timers.target"];
-  #   timerConfig = {
-  #     OnCalendar = "*:0/1"; # every minute
-  #     Persistent = true; # catch up if missed
-  #   };
-  # };
+  systemd.timers.nixos-config-rebuild = {
+    description = "Run nixos-config-update hourly";
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      OnCalendar = "*:0/1"; # every minute
+      Persistent = true; # catch up if missed
+    };
+  };
+
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
