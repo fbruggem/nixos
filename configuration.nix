@@ -27,7 +27,6 @@ in {
   environment.systemPackages = with pkgs; [
     # Apps
     ghostty
-    firefox
     discord
     spotify
     (import (builtins.fetchTarball {
