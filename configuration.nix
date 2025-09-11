@@ -30,7 +30,7 @@ in {
     spotify
     obsidian
     htop
-python3
+    python3
     (import (builtins.fetchTarball {
       url = "https://github.com/youwen5/zen-browser-flake/archive/master.tar.gz";
     }) {inherit pkgs;}).default
@@ -145,7 +145,7 @@ python3
     serviceConfig = {
       Type = "oneshot";
       ExecStart = ''
-        ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch -I nixos-config=/home/fbruggem/nixos/configuration.nix
+        ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch -I nixos-config=/home/fbruggem/nixos/configuration.nix -I nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos
       '';
       # run as root (default), so we don't set User
       Environment = [
@@ -153,14 +153,6 @@ python3
       ];
     };
   };
-  # systemd.timers.nixos-config-pull = {
-  #   description = "Run nixos-config-update hourly";
-  #   wantedBy = ["timers.target"];
-  #   timerConfig = {
-  #     OnCalendar = "*:0/1"; # every minute
-  #     Persistent = true; # catch up if missed
-  #   };
-  # };
 
   # systemd.timers.nixos-config-rebuild = {
   #   description = "Run nixos-config-update hourly";
