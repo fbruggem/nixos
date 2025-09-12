@@ -16,11 +16,11 @@ in {
   home-manager.users.${username} = {
     home.stateVersion = "25.05";
     home.file = {
-      ".config/ghostty/config".source = ./config/ghostty;
-      ".bashrc".source = ./config/bashrc;
-      ".config/gdb/gdbinit".source = ./config/gdbinit;
+      ".config/ghostty/config".source = ./dotfiles/ghostty;
+      ".bashrc".source = ./dotfiles/bashrc;
+      ".config/gdb/gdbinit".source = ./dotfiles/gdbinit;
       ".config/nvim" = {
-        source = ./config/nvim;
+        source = ./dotfiles/nvim;
         recursive = true;
       };
     };
