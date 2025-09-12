@@ -165,7 +165,7 @@ in {
     serviceConfig = {
       Type = "oneshot";
       ExecStart = ''
-        nix-collect-garbage -d
+        ${pkgs.nix}/bin/nix-collect-garbage -d
       '';
     };
   };
