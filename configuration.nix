@@ -2,7 +2,12 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  zen-browser = import (builtins.fetchTarball {
+    url = "https://github.com/youwen5/zen-browser-flake/archive/master.tar.gz";
+  }) {inherit pkgs;};
+  username = "fbruggem";
+in {
   imports = [
     /etc/nixos/hardware-configuration.nix
     ./home.nix
@@ -11,9 +16,9 @@
   networking.hostName = "nixos";
   system.stateVersion = "25.05";
 
-  users.users.fbruggem = {
+  users.users.${username} = {
     isNormalUser = true;
-    description = "fbruggem";
+    description = "${username}";
     extraGroups = ["input" "uinput" "networkmanager" "wheel"];
   };
 
@@ -110,11 +115,11 @@
     description = "Update NixOS config repository";
     serviceConfig = {
       Type = "oneshot";
-      WorkingDirectory = "/home/fbruggem/nixos"; # adjust this path to where your git repo is
+      WorkingDirectory = "/home/${username}/nixos"; # adjust this path to where your git repo is
       ExecStart = pkgs.writeShellScript "nixos-config-pull" ''
         set -euo pipefail
-        export HOME=/home/fbruggem
-        cd /home/fbruggem/nixos
+        export HOME=/home/${username}
+        cd /home/${username}/nixos
 
         echo "[nixos-config-pull] fetching..."
         ${pkgs.git}/bin/git fetch origin
@@ -132,10 +137,10 @@
           exit 1
         fi
       '';
-      User = "fbruggem"; # or another user if your repo isn’t root-owned
+      User = "${username}"; # or another user if your repo isn’t root-owned
       Environment = [
         "PATH=${pkgs.git}/bin:${pkgs.openssh}/bin"
-        "HOME=/home/fbruggem" # <--- so git+ssh sees ~/.ssh
+        "HOME=/home/${username}" # <--- so git+ssh sees ~/.ssh
       ];
     };
   };
@@ -149,7 +154,7 @@
     serviceConfig = {
       Type = "oneshot";
       ExecStart = ''
-        ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch -I nixos-config=/home/fbruggem/nixos/configuration.nix -I nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos
+        ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch -I nixos-config=/home/${username}/nixos/configuration.nix -I nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos
       '';
       # run as root (default), so we don't set User
       Environment = [
