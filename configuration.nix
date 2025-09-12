@@ -27,6 +27,7 @@
     obsidian
     (import (builtins.fetchTarball {
       url = "https://github.com/youwen5/zen-browser-flake/archive/master.tar.gz";
+      sha256 = "0q07630ac2mhp98nh4bgg2xl9mvbnpbsy9pmi3p0bikr131db78i";
     }) {inherit pkgs;}).default
 
     # neovim
