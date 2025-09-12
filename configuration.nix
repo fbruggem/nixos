@@ -150,23 +150,20 @@ in {
     };
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = ''
+      ExecStart = pkgs.writeShellScript "nixos-config-rebuild" ''
+        # Once one command fails the script stops
+        set -euo pipefail
+
+        # Rebuild
         ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch -I nixos-config=/home/${username}/nixos/configuration.nix -I nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos
+
+        # Delete all now unused packages
+        ${pkgs.nix}/bin/nix-collect-garbage -d
       '';
       # run as root (default), so we don't set User
       Environment = [
         "PATH=${pkgs.nixos-rebuild}/bin:${pkgs.git}/bin:${pkgs.openssh}/bin:${pkgs.bash}/bin"
       ];
-    };
-  };
-
-  systemd.services.nixos-collect-garbage = {
-    description = "Remove unused /nix/store packages";
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = ''
-        ${pkgs.nix}/bin/nix-collect-garbage -d
-      '';
     };
   };
 
