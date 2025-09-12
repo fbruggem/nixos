@@ -165,7 +165,7 @@ in {
     serviceConfig = {
       Type = "oneshot";
       ExecStart = ''
-        sudo nix-collect-garbage -d
+        nix-collect-garbage -d
       '';
     };
   };
