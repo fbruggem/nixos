@@ -10,7 +10,7 @@
 in {
   imports = [
     /etc/nixos/hardware-configuration.nix
-    ./home.nix
+    (import ./home.nix {inherit config pkgs username;})
   ];
 
   networking.hostName = "nixos";

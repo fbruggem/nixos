@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  username,
   ...
 }: let
   home-manager = builtins.fetchTarball {
@@ -12,7 +13,7 @@ in {
     (import "${home-manager}/nixos")
   ];
 
-  home-manager.users.fbruggem = {
+  home-manager.users.${username} = {
     home.stateVersion = "25.05";
     home.file = {
       ".config/ghostty/config".source = ./config/ghostty;
