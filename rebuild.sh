@@ -36,6 +36,9 @@ git add -A
 git commit -m "Rebuild succeeded — $current"
 git push
 
+# Remove all unused packages
+nix-collect-garbage -d
+
 popd >/dev/null
 
 echo -e "NixOS Rebuild Successful"
