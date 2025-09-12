@@ -160,6 +160,16 @@ in {
     };
   };
 
+  systemd.services.nixos-collect-garbage = {
+    description = "Remove unused /nix/store packages";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = ''
+        sudo nix-collect-garbage -d
+      '';
+    };
+  };
+
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
