@@ -32,7 +32,6 @@ fi
 
 current=$(nixos-rebuild list-generations | grep current)
 
-git add -A
 git commit -m "Rebuild succeeded — $current"
 git push
 
