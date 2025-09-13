@@ -32,7 +32,7 @@ fi
 
 current=$(nixos-rebuild list-generations | grep current)
 
-git commit -m "Rebuild succeeded — $current"
+git commit -am "Rebuild succeeded — $current"
 git push
 
 # Remove all unused packages
