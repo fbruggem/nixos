@@ -2,6 +2,6 @@
 
 - [ ] Understanding cleanup rules
 - [ ] Documentation of setup + cleanup
-- [ ] Swap + Hibernation
+- [ ] Swap + Hibernation + what is the 18gb encrypted thing
 - [ ] NVF setup
 - [ ] alias for template shell.nix
