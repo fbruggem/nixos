@@ -164,9 +164,6 @@ in {
         ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch \
         -I nixos-config=/home/${username}/nixos/configuration.nix \
         -I nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos
-
-        # Delete all now unused packages
-        ${pkgs.nix}/bin/nix-collect-garbage -d
       '';
       # run as root (default), so we don't set User
       Environment = [

@@ -35,9 +35,6 @@ current=$(nixos-rebuild list-generations | grep current)
 git commit -am "Rebuild succeeded — $current"
 git push
 
-# Remove all unused packages
-nix-collect-garbage -d
-
 popd >/dev/null
 
 echo -e "NixOS Rebuild Successful"
