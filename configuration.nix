@@ -98,6 +98,15 @@ in {
     };
   };
 
+  # Automatic upgrading and cleanup of packages
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.dates = "weekly";
+
+  nix.gc.automatic = true;
+  nix.gc.dates = "daily";
+  nix.gc.options = "--delete-older-than 3d";
+  nix.settings.auto-optimise-store = true;
+
   # Automatic checking of new changes of the config on github and rebuild if there is a new commit
   systemd.timers.nixos-config-rebuild = {
     description = "Run nixos-config-update hourly";
