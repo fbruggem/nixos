@@ -163,8 +163,7 @@ in {
         # Rebuild
         ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch \
         -I nixos-config=/home/${username}/nixos/configuration.nix \
-        -I nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos \
-        --upgrade
+        -I nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos
 
         # Delete all now unused packages
         ${pkgs.nix}/bin/nix-collect-garbage -d
