@@ -4,3 +4,21 @@ alias ll="ls -la"
 alias vim="nvim"
 alias rebuild="~/nixos/rebuild.sh"
 alias nix-shell="nix-shell --pure"
+
+nix-shell-generate() {
+  if [ ! -f shell.nix ]; then
+    cat >shell.nix <<'EOF'
+{ pkgs ? import <nixpkgs> {} }:
+
+pkgs.mkShell {
+  name = "dev-shell";
+
+  # Replace with dev tools you actually need:
+  buildInputs = with pkgs; [
+  ];
+}
+EOF
+    echo "Created shell.nix in $(pwd)"
+  fi
+
+}
