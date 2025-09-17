@@ -12,7 +12,6 @@ nix-shell-generate() {
 pkgs.mkShell {
   name = "dev-shell";
 
-  # Replace with dev tools you actually need:
   buildInputs = with pkgs; [
   ];
 }
