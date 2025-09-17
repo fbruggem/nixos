@@ -3,3 +3,4 @@ set -o vi
 alias ll="ls -la"
 alias vim="nvim"
 alias rebuild="~/nixos/rebuild.sh"
+alias nix-shell="nix-shell --pure"
