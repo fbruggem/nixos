@@ -38,7 +38,7 @@ in {
     fzf
     ripgrep
     xclip
-    clang-tools
+    clang
 
     # man pages
     man-pages
