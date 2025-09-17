@@ -19,10 +19,10 @@ in {
     extraGroups = ["input" "uinput" "networkmanager" "wheel"];
   };
 
+  programs.steam.enable = true;
   # Packages
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    steam
     # Apps
     ghostty
     discord
