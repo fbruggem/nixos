@@ -18,7 +18,7 @@ pkgs.mkShell {
   ];
 }
 EOF
-    echo "Created shell.nix in $(pwd)"
+    echo "Created shell.nix in $(pwd)/shell.nix"
   fi
 
 }
