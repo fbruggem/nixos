@@ -173,7 +173,7 @@ in {
       '';
       # run as root (default), so we don't set User
       Environment = [
-        "PATH=${pkgs.nixos-rebuild}/bin:${pkgs.git}/bin:${pkgs.openssh}/bin:${pkgs.bash}/bin"
+        "PATH=${pkgs.nix}/bin:${pkgs.nixos-rebuild}/bin:${pkgs.git}/bin:${pkgs.openssh}/bin:${pkgs.bash}/bin"
       ];
     };
   };
