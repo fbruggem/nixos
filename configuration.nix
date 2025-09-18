@@ -40,6 +40,7 @@ in {
     xclip
     clang
     tree-sitter
+    busybox
 
     # man pages
     man-pages
