@@ -27,6 +27,7 @@ in {
     ghostty
     discord
     spotify
+htop
     obsidian
     (import (builtins.fetchTarball {
       url = "https://github.com/youwen5/zen-browser-flake/archive/master.tar.gz";
