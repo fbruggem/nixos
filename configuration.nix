@@ -40,7 +40,6 @@ in {
     xclip
     clang
     tree-sitter
-    busybox
 
     # man pages
     man-pages
@@ -167,6 +166,7 @@ in {
 
         # Rebuild
         ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch \
+        --upgrade \
         -I nixos-config=/home/${username}/nixos/configuration.nix \
         -I nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos
       '';
