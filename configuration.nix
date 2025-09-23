@@ -6,6 +6,7 @@
   zen =
     (import (builtins.fetchTarball {
       url = "https://github.com/youwen5/zen-browser-flake/archive/master.tar.gz";
+      sha256 = "02188k3sqpji8jvy9yar72x6iadhpi11dn5qj90d4hrdzbmvs4lm";
     }) {inherit pkgs;}).default;
 
   username = "fbruggem";
@@ -33,7 +34,6 @@ in {
     discord
     spotify
     obsidian
-
     zen
 
     # neovim
