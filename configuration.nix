@@ -30,7 +30,6 @@ in {
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     # Apps
-    htop
     discord
     spotify
     obsidian
