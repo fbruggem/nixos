@@ -30,10 +30,11 @@ in {
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     # Apps
+    ghostty
+    zen
     discord
     spotify
     obsidian
-    zen
 
     # neovim
     neovim
