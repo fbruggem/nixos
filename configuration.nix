@@ -33,6 +33,7 @@ in {
     discord
     spotify
     obsidian
+
     zen
 
     # neovim
