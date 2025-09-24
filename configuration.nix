@@ -28,7 +28,6 @@ in {
     discord
     spotify
     obsidian
-
     # neovim
     neovim
     fzf
@@ -36,11 +35,9 @@ in {
     xclip
     clang
     tree-sitter
-
     # man pages
     man-pages
     alejandra
-
     # Games
     steam
   ];
@@ -63,12 +60,6 @@ in {
             "switch-to-workspace-2" = ["<Alt>2"];
             "switch-to-workspace-3" = ["<Alt>3"];
             "switch-to-workspace-4" = ["<Alt>4"];
-
-            "move-to-workspace-1" = ["<Shift><Alt>1"];
-            "move-to-workspace-2" = ["<Shift><Alt>2"];
-            "move-to-workspace-3" = ["<Shift><Alt>3"];
-            "move-to-workspace-4" = ["<Shift><Alt>4"];
-
             "toggle-fullscreen" = ["<Super>f"];
           };
           "org/gnome/desktop/wm/preferences" = {
@@ -105,7 +96,7 @@ in {
   };
 
   nix.gc.automatic = true;
-  nix.gc.dates = "daily";
+  nix.gc.dates = "05:00";
   nix.gc.options = "--delete-older-than 3d";
   nix.settings.auto-optimise-store = true;
 
@@ -141,13 +132,10 @@ in {
         set -euo pipefail
         export HOME=/home/${username}
         cd /home/${username}/nixos
-
         echo "[nixos-config-pull] fetching..."
         ${pkgs.git}/bin/git fetch origin
-
         # count commits on remote that are not in local
         remoteAheadCount=$(${pkgs.git}/bin/git rev-list HEAD..@{u} --count)
-
         if [ "$remoteAheadCount" -gt 0 ]; then
           echo "[nixos-config-pull] remote ahead by $remoteAheadCount, pulling..."
           ${pkgs.git}/bin/git pull --ff-only
@@ -177,7 +165,6 @@ in {
       ExecStart = pkgs.writeShellScript "nixos-config-rebuild" ''
         # Once one command fails the script stops
         set -euo pipefail
-
         # Rebuild
         ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch \
         --upgrade \

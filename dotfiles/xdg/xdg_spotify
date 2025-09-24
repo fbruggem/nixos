@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Spotify
-Exec=bash -c "sleep 2 && spotify"
-Type=Application
-X-GNOME-Autostart-enabled=true
