@@ -111,6 +111,12 @@ in {
   nix.gc.options = "--delete-older-than 3d";
   nix.settings.auto-optimise-store = true;
 
+  system.autoUpgrade = {
+    enable = true;
+    flags = ["-I" "nixos-config=/home/fbruggem/nixos/configuration.nix"];
+    persistent = true;
+  };
+
   # Automatic checking of new changes of the config on github and rebuild if there is a new commit
   systemd.timers.nixos-config-rebuild = {
     description = "Run nixos-config-update hourly";
