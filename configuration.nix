@@ -33,6 +33,7 @@ in {
     ghostty
     zen
     discord
+    slack
     spotify
     obsidian
 
