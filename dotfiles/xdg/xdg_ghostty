@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Ghostty
+Exec=bash -c "sleep 2 && ghostty"
+Type=Application
+X-GNOME-Autostart-enabled=true

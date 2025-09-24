@@ -20,6 +20,9 @@ in {
       ".bashrc".source = ./dotfiles/bashrc;
       ".config/gdb/gdbinit".source = ./dotfiles/gdbinit;
       ".config/autostart/ghostty.desktop".source = ./dotfiles/xdg/xdg_ghostty;
+      ".config/autostart/zen.desktop".source = ./dotfiles/xdg/xdg_zen;
+      ".config/autostart/discord.desktop".source = ./dotfiles/xdg/xdg_discord;
+      ".config/autostart/spotify.desktop".source = ./dotfiles/xdg/xdg_spotify;
       ".config/nvim" = {
         source = ./dotfiles/nvim;
         recursive = true;
