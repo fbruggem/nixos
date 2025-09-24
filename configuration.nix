@@ -61,6 +61,11 @@ in {
     profiles.user.databases = [
       {
         settings = {
+          "org/gnome/shell" = {
+            enabled-extensions = [
+              "auto-move-windows@gnome-shell-extensions.gcampax.github.com"
+            ];
+          };
           "org/gnome/desktop/interface" = {
           };
           "org/gnome/desktop/wm/keybindings" = {
