@@ -111,15 +111,17 @@ in {
   nix.gc.options = "--delete-older-than 3d";
   nix.settings.auto-optimise-store = true;
 
+  # This upgrades packages and nixos - pulling in minor changes or security updates
+  # Because the time is set to daily at 06:00 during which time its most likely off
+  # it will _catch up_ one the first reboot of the day. If the kernel needs updating it
+  # reboots - this forces the newest updates everyday from the start BUT without rebooting
+  # when you are activly working on something
   system.autoUpgrade = {
     enable = true;
     flags = ["-I" "nixos-config=/home/fbruggem/nixos/configuration.nix"];
     persistent = true;
+    dates = "06:00";
     allowReboot = true;
-    rebootWindow = {
-      lower = "01:00";
-      upper = "05:00";
-    };
   };
 
   # Automatic checking of new changes of the config on github and rebuild if there is a new commit
