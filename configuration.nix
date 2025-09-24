@@ -75,6 +75,12 @@ in {
             "switch-to-workspace-9" = ["<Alt>9"];
             "toggle-fullscreen" = ["<Super>f"];
           };
+          "org/gnome/mutter" = {
+            "dynamic-workspaces" = false;
+          };
+          "org/gnome/desktop/wm/preferences" = {
+            "num-workspaces" = "5";
+          };
           "org/gnome/settings-daemon/plugins/media-keys" = {
             "search" = ["<Control>space"];
           };
