@@ -19,12 +19,6 @@ in {
   networking.hostName = "nixos";
   system.stateVersion = "25.05";
 
-  users.users.${username} = {
-    isNormalUser = true;
-    description = "${username}";
-    extraGroups = ["input" "uinput" "networkmanager" "wheel"];
-  };
-
   # Packages
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
@@ -195,6 +189,12 @@ in {
         "PATH=${pkgs.nix}/bin:${pkgs.nixos-rebuild}/bin:${pkgs.git}/bin:${pkgs.openssh}/bin:${pkgs.bash}/bin"
       ];
     };
+  };
+
+  users.users.${username} = {
+    isNormalUser = true;
+    description = "${username}";
+    extraGroups = ["input" "uinput" "networkmanager" "wheel"];
   };
 
   # Gnome
