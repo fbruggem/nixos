@@ -19,7 +19,7 @@ in {
       ".config/ghostty/config".source = ./dotfiles/ghostty;
       ".bashrc".source = ./dotfiles/bashrc;
       ".config/gdb/gdbinit".source = ./dotfiles/gdbinit;
-      "~/.config/autostart/ghostty.desktop".source = ./dotfiles/xdg/xdg_ghostty;
+      ".config/autostart/ghostty.desktop".source = ./dotfiles/xdg/xdg_ghostty;
       ".config/nvim" = {
         source = ./dotfiles/nvim;
         recursive = true;
