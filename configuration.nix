@@ -68,18 +68,18 @@ in {
             "switch-to-workspace-2" = ["<Alt>2"];
             "switch-to-workspace-3" = ["<Alt>3"];
             "switch-to-workspace-4" = ["<Alt>4"];
-            "switch-to-workspace-5" = ["<Alt>5"];
-            "switch-to-workspace-6" = ["<Alt>6"];
-            "switch-to-workspace-7" = ["<Alt>7"];
-            "switch-to-workspace-8" = ["<Alt>8"];
-            "switch-to-workspace-9" = ["<Alt>9"];
+            # "switch-to-workspace-5" = ["<Alt>5"];
+            # "switch-to-workspace-6" = ["<Alt>6"];
+            # "switch-to-workspace-7" = ["<Alt>7"];
+            # "switch-to-workspace-8" = ["<Alt>8"];
+            # "switch-to-workspace-9" = ["<Alt>9"];
             "toggle-fullscreen" = ["<Super>f"];
           };
           "org/gnome/mutter" = {
             "dynamic-workspaces" = false;
           };
           "org/gnome/desktop/wm/preferences" = {
-            "num-workspaces" = pkgs.lib.gvariant.mkInt32 6;
+            "num-workspaces" = pkgs.lib.gvariant.mkInt32 4;
           };
           "org/gnome/settings-daemon/plugins/media-keys" = {
             "search" = ["<Control>space"];
