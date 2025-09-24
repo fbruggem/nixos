@@ -30,6 +30,7 @@ in {
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     # Apps
+    htop
     ghostty
     zen
     discord
