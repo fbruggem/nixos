@@ -79,7 +79,7 @@ in {
             "dynamic-workspaces" = false;
           };
           "org/gnome/desktop/wm/preferences" = {
-            "num-workspaces" = "5";
+            "num-workspaces" = "6";
           };
           "org/gnome/settings-daemon/plugins/media-keys" = {
             "search" = ["<Control>space"];
