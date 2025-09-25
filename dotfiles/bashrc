@@ -17,6 +17,7 @@ pkgs.mkShell {
 }
 EOF
     echo "Created shell.nix in $(pwd)/shell.nix"
+    echo "Use the \`--pure\` option to only have the defined packages available"
   fi
 
 }

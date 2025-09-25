@@ -22,7 +22,6 @@ in {
   # Packages
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    htop
     # Apps
     ghostty
     zen
