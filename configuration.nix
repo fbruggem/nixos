@@ -33,7 +33,6 @@ in {
     ripgrep
     xclip
     clang-tools
-    clang
     tree-sitter
     # man pages
     man-pages
