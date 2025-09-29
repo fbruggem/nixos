@@ -88,8 +88,8 @@ in {
   programs.git = {
     enable = true;
     config = {
-      user.name = "felixbrgm";
-      user.email = "github.badly321@passinbox.com";
+      user.name = "fbruggem";
+      user.email = "fbruggem@proton.me";
       pull.rebase = false;
     };
   };
