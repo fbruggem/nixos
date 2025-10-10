@@ -22,8 +22,7 @@ in {
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     # Apps
-  bat
-ghostty
+    ghostty
     zen
     discord
     spotify
