@@ -38,7 +38,7 @@ in {
     man-pages
     alejandra
     # Games
-    steam-run
+    steam
   ];
 
   # to see all possible settings type in
