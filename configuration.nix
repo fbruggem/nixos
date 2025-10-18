@@ -38,7 +38,7 @@ in {
     man-pages
     alejandra
     # Games
-    steam
+    steam-run
   ];
 
   # to see all possible settings type in
@@ -201,7 +201,6 @@ in {
     layout = "us";
     variant = "";
   };
-
   # Set your time zone.
   time.timeZone = "Europe/Vienna";
 
