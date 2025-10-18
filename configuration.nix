@@ -38,6 +38,7 @@ in {
     man-pages
     alejandra
     # Games
+    steam
   ];
 
   # to see all possible settings type in
