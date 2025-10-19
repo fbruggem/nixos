@@ -18,9 +18,6 @@ in {
   networking.hostName = "nixos";
   system.stateVersion = "25.05";
 
-  # hyprland
-  programs.hyprland.enable = true;
-
   # Packages
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
