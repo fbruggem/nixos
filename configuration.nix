@@ -34,6 +34,7 @@ in {
     xclip
     clang-tools
     tree-sitter
+    nodejs
     # man pages
     man-pages
     alejandra
