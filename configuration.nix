@@ -35,8 +35,7 @@ in {
     clang-tools
     tree-sitter
     nodejs
-    htop
-    # man pages
+
     man-pages
     alejandra
   ];
