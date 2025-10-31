@@ -33,6 +33,7 @@ in {
     ripgrep
     xclip
     clang-tools
+    cargo
     tree-sitter
     nodejs
     htop
@@ -109,7 +110,7 @@ in {
     flags = ["-I" "nixos-config=/home/fbruggem/nixos/configuration.nix"];
     persistent = true;
     dates = "06:00";
-    allowReboot = false;
+    allowReboot = true;
   };
 
   # Automatic checking of new changes of the config on github and rebuild if there is a new commit
