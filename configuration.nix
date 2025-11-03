@@ -28,6 +28,8 @@ in {
     discord
     spotify
     obsidian
+    vscode
+
     # neovim
     neovim
     fzf
