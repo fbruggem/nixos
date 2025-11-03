@@ -42,6 +42,8 @@ in {
     alejandra
   ];
 
+  virtualisation.docker.enable = true;
+
   # to see all possible settings type in
   # gsettings list-schemas
   # for all groups and
@@ -181,7 +183,7 @@ in {
   users.users.${username} = {
     isNormalUser = true;
     description = "${username}";
-    extraGroups = ["input" "uinput" "networkmanager" "wheel"];
+    extraGroups = ["input" "uinput" "networkmanager" "wheel" "docker"];
   };
 
   # Gnome
