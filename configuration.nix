@@ -39,7 +39,7 @@ in {
     clang
     cargo
     # rust-analyzer
-    # rustfmt
+    rustfmt
     tree-sitter
     nodejs
     htop
