@@ -36,6 +36,7 @@ in {
     ripgrep
     xclip
     clang-tools
+    clang
     cargo
     rust-analyzer
     rustfmt
