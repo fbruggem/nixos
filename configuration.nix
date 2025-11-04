@@ -37,9 +37,9 @@ in {
     xclip
     clang-tools
     clang
-    cargo
-    rust-analyzer
-    rustfmt
+    # cargo
+    # rust-analyzer
+    # rustfmt
     tree-sitter
     nodejs
     htop
