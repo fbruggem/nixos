@@ -38,6 +38,7 @@ in {
     clang-tools
     cargo
     rust-analyzer
+    rustfmt
     tree-sitter
     nodejs
     htop
