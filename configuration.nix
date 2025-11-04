@@ -48,6 +48,11 @@ in {
     alejandra
   ];
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # list required libs, if needed
+  ];
+
   virtualisation.docker.enable = true;
 
   # to see all possible settings type in
