@@ -3,12 +3,10 @@
   pkgs,
   ...
 }: let
-  zen =
-    (import (builtins.fetchTarball {
-      url = "https://github.com/youwen5/zen-browser-flake/archive/master.tar.gz";
-      sha256 = "1bw0k6q1snq1lrfayi7c3sn5m3kd4djh35zaz8zp5fcj180dzncy";
-    }) {inherit pkgs;}).default;
-
+  # zen =
+  #   (import (builtins.fetchTarball {
+  #     url = "https://github.com/youwen5/zen-browser-flake/archive/master.tar.gz";
+  #   }) {inherit pkgs;}).default;
   username = "fbruggem";
 in {
   imports = [
@@ -24,11 +22,10 @@ in {
   environment.systemPackages = with pkgs; [
     # Apps
     ghostty
-    zen
+    # zen
     discord
     spotify
     obsidian
-    vscode
 
     # neovim
     neovim
