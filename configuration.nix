@@ -23,6 +23,7 @@ in {
     # Apps
     ghostty
     # zen
+    firefox
     discord
     spotify
     obsidian
