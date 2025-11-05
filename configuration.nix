@@ -3,14 +3,11 @@
   pkgs,
   ...
 }: let
-  # zen =
-  #   (import (builtins.fetchTarball {
-  #     url = "https://github.com/youwen5/zen-browser-flake/archive/master.tar.gz";
-  #   }) {inherit pkgs;}).default;
   zen =
     (import (builtins.fetchTarball "https://github.com/0xc000022070/zen-browser-flake/archive/master.tar.gz") {
       inherit pkgs;
     }).default;
+
   username = "fbruggem";
 in {
   imports = [
@@ -37,20 +34,16 @@ in {
     ripgrep
     xclip
     clang-tools
-    clang
     tree-sitter
     nodejs
 
+    # Coding
     man-pages
+    clang
+
+    # nix
     alejandra
   ];
-
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    # list required libs, if needed
-  ];
-
-  virtualisation.docker.enable = true;
 
   # to see all possible settings type in
   # gsettings list-schemas
@@ -106,8 +99,8 @@ in {
   };
 
   nix.gc.automatic = true;
-  nix.gc.dates = "05:00";
-  nix.gc.options = "--delete-older-than 3d";
+  nix.gc.dates = "12:00";
+  nix.gc.options = "--delete-older-than 1d";
   nix.settings.auto-optimise-store = true;
 
   # This upgrades packages and nixos - pulling in minor changes or security updates
