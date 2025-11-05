@@ -40,6 +40,7 @@ in {
     clang
     tree-sitter
     nodejs
+    xxd
     htop
 
     man-pages
