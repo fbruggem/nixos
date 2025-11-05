@@ -7,6 +7,10 @@
   #   (import (builtins.fetchTarball {
   #     url = "https://github.com/youwen5/zen-browser-flake/archive/master.tar.gz";
   #   }) {inherit pkgs;}).default;
+  zen =
+    (import (builtins.fetchTarball "https://github.com/0xc000022070/zen-browser-flake/archive/master.tar.gz") {
+      inherit pkgs;
+    }).default;
   username = "fbruggem";
 in {
   imports = [
@@ -22,8 +26,7 @@ in {
   environment.systemPackages = with pkgs; [
     # Apps
     ghostty
-    # zen
-    firefox
+    zen
     discord
     spotify
     obsidian
