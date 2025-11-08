@@ -43,6 +43,8 @@ in {
 
     # nix
     alejandra
+
+    lutris
   ];
 
   # to see all possible settings type in
