@@ -41,6 +41,7 @@ in {
     man-pages
     clang
     cargo
+    rust-analyzer
 
     # nix
     alejandra
