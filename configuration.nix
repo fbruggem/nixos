@@ -42,6 +42,7 @@ in {
     clang
     cargo
     rust-analyzer
+    rustfmt
 
     # nix
     alejandra
