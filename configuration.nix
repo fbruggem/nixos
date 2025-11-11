@@ -43,7 +43,6 @@ in {
     cargo
     rust-analyzer
     rustfmt
-    vscode
 
     # nix
     alejandra
