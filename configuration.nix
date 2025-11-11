@@ -40,9 +40,6 @@ in {
     # Coding
     man-pages
     clang
-    cargo
-    rust-analyzer
-    rustfmt
     rustup
 
     # nix
