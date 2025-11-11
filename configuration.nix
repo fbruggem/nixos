@@ -33,13 +33,12 @@ in {
     fzf
     ripgrep
     xclip
-    clang-tools
     tree-sitter
     nodejs
 
     # Coding
     man-pages
-    clang
+    clang-tools
     rustup
 
     # nix
