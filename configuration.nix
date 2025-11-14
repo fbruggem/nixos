@@ -39,7 +39,6 @@ in {
     # Coding
     man-pages
     clang-tools
-    rustup
 
     # nix
     alejandra
