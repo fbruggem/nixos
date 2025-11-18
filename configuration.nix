@@ -42,6 +42,9 @@ in {
 
     # nix
     alejandra
+
+    # gnome extensions
+    gnomeExtensions.fullscreen-notifications
   ];
   programs.nix-ld.enable = true;
   # optionally you may need to specify libraries:
