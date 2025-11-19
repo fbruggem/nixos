@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   zen =
@@ -42,15 +43,8 @@ in {
 
     # nix
     alejandra
+  ];
 
-    # gnome extensions
-    gnomeExtensions.fullscreen-notifications
-  ];
-  programs.nix-ld.enable = true;
-  # optionally you may need to specify libraries:
-  programs.nix-ld.libraries = with pkgs; [
-    # e.g. glibc, libstdc++, etc
-  ];
   # to see all possible settings type in
   # gsettings list-schemas
   # for all groups and
