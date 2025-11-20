@@ -113,7 +113,7 @@ in {
     flags = ["-I" "nixos-config=/home/fbruggem/nixos/configuration.nix"];
     persistent = true;
     dates = "06:00";
-    allowReboot = true;
+    allowReboot = false;
   };
 
   # Automatic checking of new changes of the config on github and rebuild if there is a new commit
