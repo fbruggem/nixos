@@ -17,7 +17,7 @@ in {
     home.stateVersion = "25.05";
     home.file = {
       ".config/ghostty/config".source = ./dotfiles/ghostty;
-      # ".bashrc".source = link ./dotfiles/bashrc;
+      ".bashrc".source = ./dotfiles/bashrc;
       ".config/gdb/gdbinit".source = ./dotfiles/gdbinit;
       ".config/nvim" = {
         source = ./dotfiles/nvim;
