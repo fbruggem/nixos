@@ -88,6 +88,11 @@ in {
     ];
   };
 
+  programs.nix-ld.enable = true;
+
+  programs.nix-ld.libraries = with pkgs; [
+  ];
+
   # Git
   programs.git = {
     enable = true;
