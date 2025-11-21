@@ -7,6 +7,7 @@ lspconfig.rust_analyzer.setup {
   settings = {
     ["rust-analyzer"] = {
       diagnostics = {
+        disabled = { "inactive-code" },
         enable = true
       }
     }
