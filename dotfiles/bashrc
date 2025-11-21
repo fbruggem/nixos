@@ -1,5 +1,4 @@
 export PS1="\W> "
-export PATH=$PATH:~/.cargo/bin
 set -o vi
 alias ll="ls -la"
 alias vim="nvim"
