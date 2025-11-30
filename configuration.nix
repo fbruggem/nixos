@@ -72,7 +72,7 @@ in {
             "search" = ["<Control>space"];
           };
           "org/gnome/desktop/input-sources" = {
-            "xkb-options" = "['caps:escape']";
+            # "xkb-options" = "['caps:escape']";
           };
           "org/gnome/desktop/interface" = {
             "enable-hot-corners" = false;
