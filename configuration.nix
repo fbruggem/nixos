@@ -39,7 +39,7 @@ in {
 
     # Coding
     man-pages
-    clang-tools
+    clang
 
     # nix
     alejandra
