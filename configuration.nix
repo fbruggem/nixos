@@ -55,9 +55,6 @@ in {
     profiles.user.databases = [
       {
         settings = {
-          "org/gnome/desktop/interface" = {
-            "enable-hot-corners" = false;
-          };
           "org/gnome/desktop/wm/keybindings" = {
             "switch-to-workspace-1" = ["<Alt>1"];
             "switch-to-workspace-2" = ["<Alt>2"];
@@ -74,7 +71,11 @@ in {
           "org/gnome/settings-daemon/plugins/media-keys" = {
             "search" = ["<Control>space"];
           };
+          "org/gnome/desktop/input-sources" = {
+            "xkb-options" = "['caps:escape']";
+          };
           "org/gnome/desktop/interface" = {
+            "enable-hot-corners" = false;
             enable-animations = false;
             "color-scheme" = "prefer-dark";
             "gtk-theme" = "Adwaita-dark";
