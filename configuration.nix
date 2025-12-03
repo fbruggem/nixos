@@ -41,6 +41,8 @@ in {
     man-pages
     clang
 
+    htop
+
     # nix
     alejandra
   ];
