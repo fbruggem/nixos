@@ -30,14 +30,11 @@ if ! sudo nixos-rebuild switch -I nixos-config=/home/fbruggem/nixos/configuratio
   exit 1
 fi
 
-echo HELLOOOOO
 current=$(nixos-rebuild list-generations | grep current)
 
-echo HELLOOOOO
 git commit -am "Rebuild succeeded — $current"
 git push
 
-echo HELLOOOOO
 popd >/dev/null
 
 echo -e "NixOS Rebuild Successful"
