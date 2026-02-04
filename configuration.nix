@@ -17,7 +17,7 @@ in {
   ];
 
   networking.hostName = "nixos";
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 
   # Packages
   nixpkgs.config.allowUnfree = true;
