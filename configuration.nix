@@ -41,7 +41,7 @@ in {
     man-pages
     clang
 
-    htop
+    steam
 
     # nix
     alejandra

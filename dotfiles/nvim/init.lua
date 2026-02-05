@@ -5,8 +5,8 @@ lspconfig.clangd.setup({})
 require("lspconfig").rust_analyzer.setup({
   settings = {
     ["rust-analyzer"] = {
-      cargo = {
-        -- or: sysroot = nil / unset
+      rustup = {
+        toolchain = "nightly"
       },
       imports = {
         preferNoStd = true,         -- prefer core/alloc over std
