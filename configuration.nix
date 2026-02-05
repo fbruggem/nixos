@@ -41,8 +41,6 @@ in {
     man-pages
     clang
 
-    steam
-
     # nix
     alejandra
   ];
