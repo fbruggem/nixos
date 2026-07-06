@@ -44,6 +44,7 @@
       man-pages
       clang
       clang-tools # clangd
+      cargo
       gdb
       claude-code
     ])
