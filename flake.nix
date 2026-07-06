@@ -60,6 +60,11 @@
 
     templates.default = self.templates.rust;
 
+    templates.rust = {
+      path = ./templates/rust;
+      description = "Per-project Rust devshell (fenix): pinned toolchain, rust-analyzer, direnv";
+    };
+
     # `nix fmt` formats the whole repo.
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
   };
