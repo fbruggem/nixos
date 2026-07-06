@@ -58,6 +58,8 @@
       ];
     };
 
+    templates.default = self.templates.rust;
+
     # `nix fmt` formats the whole repo.
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
   };
