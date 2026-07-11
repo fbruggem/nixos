@@ -65,6 +65,9 @@
       description = "Per-project Rust devshell (fenix): pinned toolchain, rust-analyzer, direnv";
     };
 
+
+  services.flatpak.enable = true;
+
     # `nix fmt` formats the whole repo.
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
   };
