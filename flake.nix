@@ -67,6 +67,9 @@
 
 
   services.flatpak.enable = true;
+  services.flatpak.packages = [
+      "org.mozilla.firefox"
+    ];
 
     # `nix fmt` formats the whole repo.
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
