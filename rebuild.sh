@@ -23,7 +23,7 @@ fi
 git --no-pager diff -U0 || true
 
 echo "Rebuilding (flake) → ${host}…"
-if ! sudo nixos-rebuild boot --flake "$HOME/nixos#$host"; then
+if ! sudo nixos-rebuild switch --flake "$HOME/nixos#$host"; then
   echo "Rebuild failed." >&2
   exit 1
 fi

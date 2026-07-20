@@ -17,9 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-06cb-009a-fingerprint-sensor = {
-      url = "github:ahbnr/nixos-06cb-009a-fingerprint-sensor";
-    };
   };
 
   outputs = {
@@ -32,20 +29,20 @@
     system = "x86_64-linux";
     username = "fbruggem";
   in {
-    # Default setup for thinkpad-t480s
-    nixosConfigurations.hyprland = nixpkgs.lib.nixosSystem {
-      inherit system;
-      # specialArgs makes `inputs` and `username` available to every module.
-      specialArgs = {inherit inputs username;};
-      modules = [
-        ./hardware-configuration.nix
-        ./modules/system.nix
-        ./modules/home.nix
-        ./modules/packages.nix
-        ./modules/hyprland.nix
-        home-manager.nixosModules.home-manager
-      ];
-    };
+    # # Default setup for thinkpad-t480s
+    # nixosConfigurations.hyprland = nixpkgs.lib.nixosSystem {
+    #   inherit system;
+    #   # specialArgs makes `inputs` and `username` available to every module.
+    #   specialArgs = {inherit inputs username;};
+    #   modules = [
+    #     ./hardware-configuration.nix
+    #     ./modules/system.nix
+    #     ./modules/home.nix
+    #     ./modules/packages.nix
+    #     ./modules/hyprland.nix
+    #     home-manager.nixosModules.home-manager
+    #   ];
+    # };
 
     nixosConfigurations.thinkpad-t480s = nixpkgs.lib.nixosSystem {
       inherit system;
@@ -65,11 +62,6 @@
       description = "Per-project Rust devshell (fenix): pinned toolchain, rust-analyzer, direnv";
     };
 
-
-  services.flatpak.enable = true;
-  services.flatpak.packages = [
-      "org.mozilla.firefox"
-    ];
 
     # `nix fmt` formats the whole repo.
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
