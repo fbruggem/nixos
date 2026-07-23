@@ -44,6 +44,7 @@
     #   ];
     # };
 
+    services.flatpak.enable = true;
     nixosConfigurations.thinkpad-t480s = nixpkgs.lib.nixosSystem {
       inherit system;
       # specialArgs makes `inputs` and `username` available to every module.
