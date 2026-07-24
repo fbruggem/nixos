@@ -88,6 +88,10 @@
           "org/gnome/desktop/peripherals/mouse" = {
             natural-scroll = true;
           };
+          "org/gnome/desktop/interface" = {
+            scaling-factor = pkgs.lib.gvariant.mkUint32 1;          # uint32, integer scale
+            text-scaling-factor =  1.0;   # reset if you'd bumped fonts
+          };
         };
         lockAll = true; # enforce the settings strictly
       }
