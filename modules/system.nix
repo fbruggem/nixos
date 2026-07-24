@@ -21,7 +21,7 @@
     auto-optimise-store = true;
   };
 
-    services.flatpak.enable = true;
+  services.flatpak.enable = true;
   # Garbage collection
   nix.gc = {
     automatic = true;

@@ -16,7 +16,6 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
   outputs = {
@@ -61,7 +60,6 @@
       path = ./templates/rust;
       description = "Per-project Rust devshell (fenix): pinned toolchain, rust-analyzer, direnv";
     };
-
 
     # `nix fmt` formats the whole repo.
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
