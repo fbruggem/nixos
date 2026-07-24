@@ -51,6 +51,7 @@
             enabled-extensions = [
               pkgs.gnomeExtensions.brightness-control-using-ddcutil.extensionUuid
             ];
+            favorite-apps = pkgs.lib.gvariant.mkEmptyArray pkgs.lib.gvariant.type.string;
           };
           "org/gnome/desktop/background" = {
             "picture-uri" = "file://${../dotfiles/wallpaper.jpg}";
