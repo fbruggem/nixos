@@ -69,7 +69,7 @@
             "toggle-fullscreen" = ["<Super>f"];
           };
           "org/gnome/desktop/wm/preferences" = {
-            "num-workspaces" = pkgs.lib.gvariant.mkInt32 4;
+            "num-workspaces" = pkgs.lib.gvariant.mkInt32 2;
           };
           "org/gnome/mutter" = {
             "dynamic-workspaces" = false;
