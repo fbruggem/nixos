@@ -44,9 +44,6 @@
     profiles.user.databases = [
       {
         settings = {
-          # Enabled GNOME extensions. NOTE: this database has lockAll = true,
-          # so this key is locked — any extension you want on must be listed
-          # here (you won't be able to toggle extensions from the UI).
           "org/gnome/shell" = {
             enabled-extensions = [
               pkgs.gnomeExtensions.brightness-control-using-ddcutil.extensionUuid
@@ -90,8 +87,8 @@
             natural-scroll = true;
           };
           "org/gnome/desktop/interface" = {
-            scaling-factor = pkgs.lib.gvariant.mkUint32 1;          # uint32, integer scale
-            text-scaling-factor =  1.0;   # reset if you'd bumped fonts
+            scaling-factor = pkgs.lib.gvariant.mkUint32 1;
+            text-scaling-factor =  1.0;
           };
         };
         lockAll = true; # enforce the settings strictly
