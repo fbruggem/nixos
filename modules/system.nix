@@ -21,12 +21,11 @@
     auto-optimise-store = true;
   };
 
-  services.flatpak.enable = true;
   # Garbage collection
   nix.gc = {
     automatic = true;
     dates = "12:00";
-    options = "--delete-older-than 14d";
+    options = "--delete-older-than 7d";
   };
 
   # Daily auto-upgrade FROM the flake on GitHub. This replaces the old

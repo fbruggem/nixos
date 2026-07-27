@@ -28,21 +28,6 @@
     system = "x86_64-linux";
     username = "fbruggem";
   in {
-    # # Default setup for thinkpad-t480s
-    # nixosConfigurations.hyprland = nixpkgs.lib.nixosSystem {
-    #   inherit system;
-    #   # specialArgs makes `inputs` and `username` available to every module.
-    #   specialArgs = {inherit inputs username;};
-    #   modules = [
-    #     ./hardware-configuration.nix
-    #     ./modules/system.nix
-    #     ./modules/home.nix
-    #     ./modules/packages.nix
-    #     ./modules/hyprland.nix
-    #     home-manager.nixosModules.home-manager
-    #   ];
-    # };
-
     nixosConfigurations.thinkpad-t480s = nixpkgs.lib.nixosSystem {
       inherit system;
       # specialArgs makes `inputs` and `username` available to every module.
