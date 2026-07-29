@@ -61,12 +61,12 @@
           "org/gnome/desktop/wm/keybindings" = {
             "switch-to-workspace-1" = ["<Alt>1"];
             "switch-to-workspace-2" = ["<Alt>2"];
-            "switch-to-workspace-3" = ["<Alt>3"];
-            "switch-to-workspace-4" = ["<Alt>4"];
+            # "switch-to-workspace-3" = ["<Alt>3"];
+            # "switch-to-workspace-4" = ["<Alt>4"];
             "toggle-fullscreen" = ["<Super>f"];
           };
           "org/gnome/desktop/wm/preferences" = {
-            "num-workspaces" = pkgs.lib.gvariant.mkInt32 4;
+            "num-workspaces" = pkgs.lib.gvariant.mkInt32 2;
           };
           "org/gnome/mutter" = {
             "dynamic-workspaces" = false;
