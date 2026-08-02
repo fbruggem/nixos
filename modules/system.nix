@@ -21,6 +21,9 @@
   # radio). Trade-off: PS/2 mode drops some high-res multitouch gestures.
   # boot.kernelParams = ["psmouse.elantech_smbus=0"];
 
+
+  nixpkgs.config.allowUnfree = true;
+
   # Networking
   networking.networkmanager.enable = true;
 

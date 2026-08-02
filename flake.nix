@@ -39,7 +39,6 @@
       ];
     };
 
-    nixpkgs.config.allowUnfree = true;
 
     templates.default = self.templates.rust;
 
