@@ -41,6 +41,7 @@
       cargo
       gdb
       claude-code
+      vscode
     ])
     ++ [
       # Zen browser comes from its flake input, pinned via flake.lock.
