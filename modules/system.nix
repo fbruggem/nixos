@@ -19,7 +19,7 @@
   # This forces the touchpad to stay in PS/2 mode instead of upgrading to SMBus,
   # bypassing the contended bus. A Bluetooth mouse is unaffected (separate USB
   # radio). Trade-off: PS/2 mode drops some high-res multitouch gestures.
-  # boot.kernelParams = ["psmouse.elantech_smbus=0"];
+  boot.kernelParams = ["psmouse.elantech_smbus=0"];
 
 
   nixpkgs.config.allowUnfree = true;
