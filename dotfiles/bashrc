@@ -39,7 +39,7 @@ rust-init() {
 
 x() {
   tmux new-session \; \
-    split-window -h -p 30 \; \
+    split-window -h -p 70 \; \
     select-pane -t 0
 }
 
