@@ -3,4 +3,5 @@ keybind = ctrl+.=unbind
 keybind = ctrl+,=unbind
 keybind = ctrl+shift+.=unbind
 keybind = ctrl+shift+,=unbind
+fullscreen = true
 command =   tmux new-session \; split-window -hbd -l 10%
