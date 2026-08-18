@@ -3,4 +3,4 @@ keybind = ctrl+.=unbind
 keybind = ctrl+,=unbind
 keybind = ctrl+shift+.=unbind
 keybind = ctrl+shift+,=unbind
-command =   tmux new-session \; split-window -h -p 20 \; select-pane -t 0
+command =   tmux new-session \; split-window -hbd -l 20%

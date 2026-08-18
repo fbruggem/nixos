@@ -37,10 +37,4 @@ rust-init() {
   echo "  build target      -> .cargo/config.toml"
 }
 
-x() {
-  tmux new-session \; \
-    split-window -h -p 10 \; \
-    select-pane -t 0
-}
-
 export PS1="\W> "
