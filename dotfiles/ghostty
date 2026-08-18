@@ -3,4 +3,4 @@ keybind = ctrl+.=unbind
 keybind = ctrl+,=unbind
 keybind = ctrl+shift+.=unbind
 keybind = ctrl+shift+,=unbind
-command =   tmux new-session \; split-window -hbd -l 20%
+command =   tmux new-session \; split-window -hbd -l 10%
