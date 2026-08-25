@@ -50,6 +50,9 @@
             ];
             favorite-apps = pkgs.lib.gvariant.mkEmptyArray pkgs.lib.gvariant.type.string;
           };
+          "org/gnome/shell/keybindings" = {
+            "show-screenshot-ui" = ["<Super>s"];
+          };
           "org/gnome/desktop/background" = {
             "picture-uri" = "file://${../dotfiles/wallpaper.jpg}";
             "picture-uri-dark" = "file://${../dotfiles/wallpaper.jpg}";
