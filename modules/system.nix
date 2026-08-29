@@ -49,6 +49,7 @@
     enable = true;
     flake = "github:fbruggem/nixos";
     dates = "06:00";
+    operation = "boot";
     persistent = true;
     allowReboot = false;
   };

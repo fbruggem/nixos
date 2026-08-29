@@ -23,6 +23,7 @@
       # Apps
       ghostty
       tmux
+      obsidian
 
       # Editor + CLI
       neovim
@@ -41,7 +42,6 @@
       cargo
       gdb
       claude-code
-      vscode
     ])
     ++ [
       # Zen browser comes from its flake input, pinned via flake.lock.
