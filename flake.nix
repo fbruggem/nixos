@@ -34,6 +34,7 @@
       specialArgs = {inherit inputs username;};
       modules = [
         ./hardware-configuration.nix
+        ./modules/desktop.nix
         ./modules
         home-manager.nixosModules.home-manager
       ];
@@ -45,7 +46,6 @@
       specialArgs = {inherit inputs username;};
       modules = [
         ./hardware-configuration.nix
-        ./modules/desktop.nix
         ./modules
         home-manager.nixosModules.home-manager
       ];
