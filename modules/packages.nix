@@ -40,5 +40,7 @@
       clang-tools # clangd
       cargo
       gdb
+
+      bundletool
     ];
 }
