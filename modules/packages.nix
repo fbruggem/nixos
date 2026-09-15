@@ -19,12 +19,10 @@
   };
 
 
-  environment.systemPackages =
-    (with pkgs; [
+  environment.systemPackages = with pkgs; [
       # Apps
       ghostty
       tmux
-      obsidian
 
       # Editor + CLI
       neovim
@@ -42,9 +40,5 @@
       clang-tools # clangd
       cargo
       gdb
-    ])
-    ++ [
-      # Zen browser comes from its flake input, pinned via flake.lock.
-      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 }

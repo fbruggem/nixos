@@ -12,11 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
@@ -24,7 +19,6 @@
     self,
     nixpkgs,
     home-manager,
-    zen-browser,
     ...
   } @ inputs: let
     system = "x86_64-linux";
