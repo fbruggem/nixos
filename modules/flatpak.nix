@@ -32,6 +32,7 @@
     # or the "Application ID" column of `flatpak search <name>`.
     packages = [
       "com.spotify.Client"
+      "app.zen_browser.zen"
 
       # Long form. Pinning a commit freezes the app (the update timer skips it);
       # list commits with `flatpak remote-info --log flathub <app-id>`.
