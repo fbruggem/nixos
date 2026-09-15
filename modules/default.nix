@@ -4,5 +4,6 @@
     ./system.nix
     ./packages.nix
     ./home.nix
+    ./flatpak.nix
   ];
 }

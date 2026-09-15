@@ -18,7 +18,6 @@
     ];
   };
 
-  services.flatpak.enable = true;
 
   environment.systemPackages =
     (with pkgs; [
@@ -46,6 +45,6 @@
     ])
     ++ [
       # Zen browser comes from its flake input, pinned via flake.lock.
-      inputs.zen-browser.packages.${pkgs.system}.default
+      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 }
