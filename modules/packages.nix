@@ -41,6 +41,7 @@
       cargo
       gdb
 
+google-chrome
       bundletool
     ];
 }
