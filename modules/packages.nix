@@ -41,6 +41,6 @@
       cargo
       gdb
 
-      bundletool
+      virtualbox
     ];
 }
