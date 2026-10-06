@@ -18,6 +18,8 @@
     ];
   };
 
+virtualisation.virtualbox.host.enable = true;
+   users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
 
   environment.systemPackages = with pkgs; [
       # Apps
@@ -40,7 +42,5 @@
       clang-tools # clangd
       cargo
       gdb
-
-      virtualbox
     ];
 }
