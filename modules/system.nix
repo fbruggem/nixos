@@ -11,7 +11,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
+boot.extraModprobeConfig = ''
+  options snd-hda-intel model=17aa:2288
+'';
   # Fix Elan touchpad/TrackPoint interval lag introduced by a BIOS/EC firmware
   # update (applied via Fedora's fwupd; persists in hardware, so it lags on any
   # OS). Both internal pointers share I2C client 0-0015 on the shared i801
