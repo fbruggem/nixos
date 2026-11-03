@@ -13,6 +13,9 @@
     };
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+
+    # flake.nix inputs
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs = {
@@ -33,10 +36,10 @@
         ./modules/desktop.nix
         ./modules/system.nix
         ./modules
+        inputs.nixos-hardware.nixosModules.framework-intel-core-ultra-series3
         home-manager.nixosModules.home-manager
       ];
     };
-
 
     nixosConfigurations.campus = nixpkgs.lib.nixosSystem {
       inherit system;
