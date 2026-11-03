@@ -26,7 +26,6 @@
   environment.systemPackages = with pkgs; [
     # Apps
     ghostty
-    tmux
     lmstudio
 
     # Editor + CLI
