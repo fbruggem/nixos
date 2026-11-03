@@ -52,7 +52,8 @@
       modules = [
         ./hardware-configurations/framework-13-pro.nix
         ./modules/system.nix
-        ./modules
+        ./modules/packages.nix
+        ./modules/home.nix
         home-manager.nixosModules.home-manager
       ];
     };
