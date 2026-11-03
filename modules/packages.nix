@@ -27,6 +27,7 @@
     # Apps
     ghostty
     lmstudio
+    tmux
 
     # Editor + CLI
     neovim
