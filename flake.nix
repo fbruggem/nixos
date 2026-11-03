@@ -27,6 +27,21 @@
     system = "x86_64-linux";
     username = "fbruggem";
   in {
+
+    nixosConfigurations.framework-13-pro = nixpkgs.lib.nixosSystem {
+      inherit system;
+      # specialArgs makes `inputs` and `username` available to every module.
+      specialArgs = {inherit inputs username;};
+      modules = [
+        ./hardware-configurations/framework-13-pro.nix
+        ./modules/desktop.nix
+        ./modules/system.nix
+        ./modules
+        inputs.nixos-hardware.nixosModules.framework-intel-core-ultra-series3
+        home-manager.nixosModules.home-manager
+      ];
+    };
+
     nixosConfigurations.thinkpad-t480s = nixpkgs.lib.nixosSystem {
       inherit system;
       # specialArgs makes `inputs` and `username` available to every module.
@@ -36,10 +51,9 @@
         ./modules/desktop.nix
         ./modules/system.nix
         ./modules
-        inputs.nixos-hardware.nixosModules.framework-intel-core-ultra-series3
         home-manager.nixosModules.home-manager
       ];
-    };
+ };
 
     nixosConfigurations.campus = nixpkgs.lib.nixosSystem {
       inherit system;
