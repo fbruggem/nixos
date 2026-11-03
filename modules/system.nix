@@ -48,6 +48,9 @@
     allowReboot = false;
   };
 
+
+  environment.systemPackages = with pkgs; [ btop ];
+
   # Time & locale
   time.timeZone = "Europe/Vienna";
   i18n.defaultLocale = "en_US.UTF-8";
