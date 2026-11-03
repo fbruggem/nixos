@@ -28,7 +28,6 @@
     ghostty
     lmstudio
     tmux
-
     # Editor + CLI
     neovim
     fzf

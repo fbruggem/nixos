@@ -13,7 +13,6 @@
     };
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-
     # flake.nix inputs
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
@@ -46,6 +45,17 @@
       ];
     };
 
+    nixosConfigurations.head-less = nixpkgs.lib.nixosSystem {
+      inherit system;
+      # specialArgs makes `inputs` and `username` available to every module.
+      specialArgs = {inherit inputs username;};
+      modules = [
+        ./hardware-configurations/framework-13-pro.nix
+        ./modules/system.nix
+        ./modules
+        home-manager.nixosModules.home-manager
+      ];
+    };
     nixosConfigurations.thinkpad-t480s = nixpkgs.lib.nixosSystem {
       inherit system;
       # specialArgs makes `inputs` and `username` available to every module.
