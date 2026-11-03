@@ -27,6 +27,10 @@
     system = "x86_64-linux";
     username = "fbruggem";
   in {
+    legacyPackages.${system} = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
 
     nixosConfigurations.framework-13-pro = nixpkgs.lib.nixosSystem {
       inherit system;
@@ -53,7 +57,7 @@
         ./modules
         home-manager.nixosModules.home-manager
       ];
- };
+    };
 
     nixosConfigurations.campus = nixpkgs.lib.nixosSystem {
       inherit system;
