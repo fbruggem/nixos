@@ -2,7 +2,6 @@
   description = "fbruggem's NixOS configuration";
 
   inputs = {
-    # Track the 25.11 release. Bump this string to move releases.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
     # `follows` keeps home-manager on the SAME nixpkgs as the system,
@@ -53,6 +52,7 @@
         home-manager.nixosModules.home-manager
       ];
     };
+
     nixosConfigurations.thinkpad-t480s = nixpkgs.lib.nixosSystem {
       inherit system;
       # specialArgs makes `inputs` and `username` available to every module.

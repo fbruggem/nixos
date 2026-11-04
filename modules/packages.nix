@@ -28,6 +28,8 @@
     ghostty
     lmstudio
     tmux
+    kicad
+    fstl
     # Editor + CLI
     neovim
     fzf
