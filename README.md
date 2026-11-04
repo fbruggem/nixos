@@ -95,3 +95,11 @@ project root — it's deep-merged over the defaults per project.
 
 > Note: `nix flake init -t` only copies dotfiles that exist in the template;
 > all of `flake.nix`, `.envrc`, `.cargo/config.toml`, `.gitignore` are included.
+
+
+---
+flake.nix
+
+
+`rebuild framework-dev`
+`rebuild campus-dev`
