@@ -48,6 +48,7 @@
         ./modules/system.nix
         ./modules/packages.nix
         ./modules/home.nix
+        ./modules/hyprland.nix
         home-manager.nixosModules.home-manager
       ];
     };
