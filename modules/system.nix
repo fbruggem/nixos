@@ -14,8 +14,8 @@
   boot.extraModprobeConfig = ''
     options snd-hda-intel model=17aa:2288
   '';
-  hardware.enableRedistributableFirmware = true;     # ships the iwlwifi ucode
-  networking.networkmanager.wifi.powersave = false;  # common iwlwifi flakiness fix
+  hardware.enableRedistributableFirmware = true; # ships the iwlwifi ucode
+  networking.networkmanager.wifi.powersave = false; # common iwlwifi flakiness fix
   nixpkgs.config.allowUnfree = true;
 
   # Networking
@@ -47,7 +47,6 @@
     persistent = true;
     allowReboot = false;
   };
-
 
   # Time & locale
   time.timeZone = "Europe/Vienna";

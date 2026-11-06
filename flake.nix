@@ -25,7 +25,6 @@
     system = "x86_64-linux";
     username = "fbruggem";
   in {
-
     nixosConfigurations.framework-13-pro = nixpkgs.lib.nixosSystem {
       inherit system;
       # specialArgs makes `inputs` and `username` available to every module.
@@ -38,6 +37,19 @@
         inputs.nixos-hardware.nixosModules.framework-intel-core-ultra-series3
         home-manager.nixosModules.home-manager
       ];
+    };
+
+    services.openssh = {
+      enable = true;
+      openFirewall = true;
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        PermitRootLogin = "no";
+        AllowUsers = ["fbruggem"];
+        MaxAuthTries = 3;
+        PerSourcePenalties = "crash:3600s authfail:3600s max:86400s";
+      };
     };
 
     nixosConfigurations.head-less = nixpkgs.lib.nixosSystem {
