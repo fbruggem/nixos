@@ -39,66 +39,6 @@
       ];
     };
 
-    nixosConfigurations.head-less = nixpkgs.lib.nixosSystem {
-      inherit system;
-      # specialArgs makes `inputs` and `username` available to every module.
-      specialArgs = {inherit inputs username;};
-      modules = [
-        ./hardware-configurations/framework-13-pro.nix
-        ./modules/system.nix
-        ./modules/packages.nix
-        ./modules/home.nix
-        ./modules/hyprland.nix
-        home-manager.nixosModules.home-manager
-      ];
-    };
-
-    nixosConfigurations.thinkpad-t480s = nixpkgs.lib.nixosSystem {
-      inherit system;
-      # specialArgs makes `inputs` and `username` available to every module.
-      specialArgs = {inherit inputs username;};
-      modules = [
-        ./hardware-configuration.nix
-        ./modules/desktop.nix
-        ./modules/system.nix
-        ./modules
-        home-manager.nixosModules.home-manager
-      ];
-    };
-
-    nixosConfigurations.campus = nixpkgs.lib.nixosSystem {
-      inherit system;
-      # specialArgs makes `inputs` and `username` available to every module.
-      specialArgs = {inherit inputs username;};
-      modules = [
-        ./hardware-configuration.nix
-        ./modules/desktop.nix
-        ./modules/system-campus.nix
-        ./modules
-        home-manager.nixosModules.home-manager
-      ];
-    };
-
-    nixosConfigurations.hyprland-campus = nixpkgs.lib.nixosSystem {
-      inherit system;
-      # specialArgs makes `inputs` and `username` available to every module.
-      specialArgs = {inherit inputs username;};
-      modules = [
-        ./hardware-configuration.nix
-        ./modules/hyprland.nix
-        ./modules/system-campus.nix
-        ./modules
-        home-manager.nixosModules.home-manager
-      ];
-    };
-
-    templates.default = self.templates.rust;
-
-    templates.rust = {
-      path = ./templates/rust;
-      description = "Per-project Rust devshell (fenix): pinned toolchain, rust-analyzer, direnv";
-    };
-
     # `nix fmt` formats the whole repo.
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
