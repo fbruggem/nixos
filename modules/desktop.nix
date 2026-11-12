@@ -62,12 +62,11 @@
             "picture-uri" = "file://${../dotfiles/wallpaper.jpg}";
           };
           "org/gnome/desktop/wm/keybindings" = {
-            "switch-to-workspace-1" = ["<Alt>`"];
-            "switch-to-workspace-2" = ["<Alt>1"];
-            "switch-to-workspace-3" = ["<Alt>2"];
-            "switch-to-workspace-4" = ["<Alt>3"];
-            "switch-to-workspace-5" = ["<Alt>4"];
-            "switch-to-workspace-6" = ["<Alt>5"];
+            "switch-to-workspace-1" = ["<Alt>1"];
+            "switch-to-workspace-2" = ["<Alt>2"];
+            "switch-to-workspace-3" = ["<Alt>3"];
+            "switch-to-workspace-4" = ["<Alt>4"];
+            "switch-to-workspace-5" = ["<Alt>5"];
             "toggle-fullscreen" = ["<Super>f"];
           };
           "org/gnome/desktop/wm/preferences" = {
