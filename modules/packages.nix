@@ -30,6 +30,7 @@
     tmux
     kicad
     fstl
+    btop
     # Editor + CLI
     neovim
     fzf
