@@ -49,7 +49,6 @@
     cargo
     gdb
 
-    claude-code
     bundletool
     alejandra
   ];
