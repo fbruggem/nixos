@@ -31,8 +31,6 @@
       specialArgs = {inherit inputs username;};
       modules = [
         ./hardware-configurations/framework-13-pro.nix
-        ./modules/desktop.nix
-        ./modules/system.nix
         ./modules
         inputs.nixos-hardware.nixosModules.framework-intel-core-ultra-series3
         home-manager.nixosModules.home-manager

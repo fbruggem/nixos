@@ -5,5 +5,7 @@
     ./home.nix
     ./flatpak.nix
     ./easyeffects.nix
+    ./system.nix
+    ./desktop.nix
   ];
 }
