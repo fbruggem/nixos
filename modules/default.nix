@@ -4,5 +4,6 @@
     ./packages.nix
     ./home.nix
     ./flatpak.nix
+    ./easyeffects.nix
   ];
 }
