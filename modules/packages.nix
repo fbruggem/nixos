@@ -18,9 +18,6 @@
     ];
   };
 
-  programs.steam.enable = true;
-  hardware.steam-hardware.enable = true;
-
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = ["fbruggem"];
 

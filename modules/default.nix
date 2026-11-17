@@ -7,5 +7,6 @@
     ./easyeffects.nix
     ./system.nix
     ./desktop.nix
+    ./gaming.nix
   ];
 }
