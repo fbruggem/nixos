@@ -7,6 +7,9 @@
   system.stateVersion = "26.05";
   networking.hostName = "framework-13-pro";
 
+  services.fprintd.enable = true;
+  services.fwupd.enable = true; # for sensor firmware updates
+
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
