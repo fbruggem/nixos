@@ -12,6 +12,36 @@
   ...
 }: {
   home-manager.users.${username} = {
+    # ← new: load the preset once Easy Effects' socket is up
+    systemd.user.services.easyeffects.Service.ExecStartPost = let
+      loadPreset = pkgs.writeShellScript "easyeffects-load-preset" ''
+        sock="$XDG_RUNTIME_DIR/EasyEffectsServer"
+        for _ in {1..100}; do
+          if [ -S "$sock" ]; then
+            echo "load_preset:output:framework13-pro" \
+              | ${pkgs.socat}/bin/socat - UNIX-CONNECT:"$sock" && exit 0
+          fi
+          ${pkgs.coreutils}/bin/sleep 0.1
+        done
+        exit 1
+      '';
+    in "-${loadPreset}";
+
+    # ← new: mic to 40% at login
+    systemd.user.services.mic-volume = {
+      Unit = {
+        Description = "Set default microphone volume to 40%";
+        After = ["wireplumber.service"];
+        Wants = ["wireplumber.service"];
+      };
+      Service = {
+        Type = "oneshot";
+        ExecStartPre = "${pkgs.coreutils}/bin/sleep 3";
+        ExecStart = "${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 0.4";
+      };
+      Install.WantedBy = ["graphical-session.target"];
+    };
+
     xdg.dataFile."easyeffects/irs/IR_22ms_27dB_5t_15s_0c.irs".source = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/FrameworkComputer/linux-docs/main/easy-effects/irs/IR_22ms_27dB_5t_15s_0c.irs";
       sha256 = "sha256-IxDXNhnTg/NrhPxA5+6u/meEnlX720eoQPyoJfbuge0=";
@@ -19,7 +49,6 @@
 
     services.easyeffects = {
       enable = true;
-      preset = "framework13-pro";
 
       extraPresets.framework13-pro.output = {
         blocklist = [];
