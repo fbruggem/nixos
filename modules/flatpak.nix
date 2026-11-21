@@ -11,7 +11,11 @@
 # Flatpaks live in /var/lib/flatpak, outside the Nix store, and come straight
 # from Flathub at install/update time. The list is declarative; the versions
 # float (unless you pin a commit, see below).
-{inputs, ...}: {
+{
+  inputs,
+  username,
+  ...
+}: {
   # `inputs` arrives via specialArgs (flake.nix), which is why it can be used
   # inside `imports`; arguments set through _module.args can't.
   imports = [inputs.nix-flatpak.nixosModules.nix-flatpak];

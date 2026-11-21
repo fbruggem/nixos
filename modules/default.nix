@@ -6,7 +6,7 @@
     ./flatpak.nix
     ./easyeffects.nix
     ./system.nix
-    ./desktop.nix
+    ./gnome.nix
     ./gaming.nix
   ];
 }
