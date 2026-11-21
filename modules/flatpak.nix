@@ -35,6 +35,7 @@
       "app.zen_browser.zen"
       "md.obsidian.Obsidian"
       "com.discordapp.Discord"
+      "io.gitlab.news_flash.NewsFlash"
 
       # Long form. Pinning a commit freezes the app (the update timer skips it);
       # list commits with `flatpak remote-info --log flathub <app-id>`.
