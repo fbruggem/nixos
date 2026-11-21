@@ -12,7 +12,7 @@
   ...
 }: {
   home-manager.users.${username} = {
-    home.file.".config/easyeffects/irs/IR_22ms_27dB_5t_15s_0c.irs".source = pkgs.fetchurl {
+    xdg.dataFile."easyeffects/irs/IR_22ms_27dB_5t_15s_0c.irs".source = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/FrameworkComputer/linux-docs/main/easy-effects/irs/IR_22ms_27dB_5t_15s_0c.irs";
       sha256 = "sha256-IxDXNhnTg/NrhPxA5+6u/meEnlX720eoQPyoJfbuge0=";
     };
