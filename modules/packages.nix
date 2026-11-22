@@ -29,6 +29,7 @@
     kicad
     fstl
     btop
+    eza
     # Editor + CLI
     neovim
     fzf
