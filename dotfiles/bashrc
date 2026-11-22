@@ -4,6 +4,7 @@ alias vim="nvim"
 alias rebuild="~/nixos/rebuild.sh"
 alias ls="eza --icons -l"
 alias cat="bat"
+alias find="fd"
 
 # direnv: auto-load per-project devshells (.envrc containing `use flake`).
 # .bashrc is a static (home-manager-linked) file, so we add the hook here.

@@ -31,6 +31,7 @@
     btop
     eza
     bat
+    fd
     # Editor + CLI
     neovim
     fzf
