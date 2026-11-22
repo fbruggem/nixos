@@ -32,6 +32,7 @@
     eza
     bat
     fd
+    fzf
     # Editor + CLI
     neovim
     fzf
