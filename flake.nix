@@ -28,7 +28,7 @@
       # specialArgs makes `inputs` and `username` available to every module.
       specialArgs = {inherit inputs username;};
       modules = [
-        ./hardware-configurations/framework-13-pro.nix
+        ./hardware-configurations/framework.nix
         ./modules
         inputs.nixos-hardware.nixosModules.framework-intel-core-ultra-series3
         home-manager.nixosModules.home-manager
