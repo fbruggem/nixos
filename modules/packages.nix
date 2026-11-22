@@ -18,6 +18,8 @@
     ];
   };
 
+  documentation.dev.enable = true;
+
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = ["fbruggem"];
 
@@ -45,6 +47,7 @@
 
     # C / systems programming
     man-pages
+    man-pages-posix
     clang
     clang-tools # clangd
     cargo
