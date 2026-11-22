@@ -29,7 +29,7 @@
       specialArgs = {inherit inputs username;};
       modules = [
         ./hardware-configurations/framework.nix
-        ./modules
+        ./hosts/main.nix
         inputs.nixos-hardware.nixosModules.framework-intel-core-ultra-series3
         home-manager.nixosModules.home-manager
       ];
