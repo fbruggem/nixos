@@ -4,15 +4,13 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
-    # `follows` keeps home-manager on the SAME nixpkgs as the system,
-    # so there's no version skew between the two.
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-    # flake.nix inputs
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
@@ -25,7 +23,7 @@
     system = "x86_64-linux";
     username = "fbruggem";
   in {
-    nixosConfigurations.framework-13-pro = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.framework = nixpkgs.lib.nixosSystem {
       inherit system;
       # specialArgs makes `inputs` and `username` available to every module.
       specialArgs = {inherit inputs username;};
