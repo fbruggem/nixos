@@ -16,7 +16,7 @@ git pull --ff-only || true
 
 # Format nix files if the formatter is present.
 if command -v alejandra >/dev/null; then
-  alejandra . >/dev/null || true
+  alejandra . 2>/dev/null >/dev/null || true
 fi
 
 # Show what changed.
