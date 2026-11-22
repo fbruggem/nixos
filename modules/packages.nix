@@ -30,6 +30,7 @@
     fstl
     btop
     eza
+    bat
     # Editor + CLI
     neovim
     fzf
