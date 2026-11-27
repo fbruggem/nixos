@@ -5,7 +5,7 @@
   ...
 }: {
   system.stateVersion = "26.05";
-  networking.hostName = "framework-13-pro";
+  networking.hostName = "framework";
 
   services.fprintd.enable = true;
   services.fwupd.enable = true; # for sensor firmware updates
